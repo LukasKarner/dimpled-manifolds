@@ -7,7 +7,7 @@ def set_up_log(filename):
     logging.basicConfig(
         format='%(asctime)s %(levelname)s: %(message)s',
         level=logging.DEBUG,
-        filename=filename+'.log',
+        filename=filename + '.log',
         encoding='utf-8',
     )
 
@@ -44,6 +44,7 @@ def test_ae(
         model,
         loss_fn,
         device,
+        name='test',
 ):
     num_batches = len(dataloader)
     model.eval()
@@ -54,7 +55,8 @@ def test_ae(
             pred = model(X)
             loss += loss_fn(pred, X).item()
     loss /= num_batches
-    logging.info(f'test results: loss = {loss:f}')
+    logging.info(f'{name} results: loss = {loss:f}')
+    return loss
 
 
 def train_cl(
@@ -81,7 +83,7 @@ def train_cl(
 
         if batch in checkpoints:
             loss, pct, acc = loss.item(), batch / size, (pred.argmax(1) == y).type(torch.float).mean().item()
-            logging.info(f'{pct:4.0%} | accuracy = {acc:4.2%} | loss = {loss:f}')
+            logging.info(f'{pct:4.0%} | accuracy = {acc:7.2%} | loss = {loss:f}')
 
 
 def test_cl(
@@ -89,6 +91,7 @@ def test_cl(
         model,
         loss_fn,
         device,
+        name='test',
 ):
     size = len(dataloader.dataset)
     num_batches = len(dataloader)
@@ -102,4 +105,5 @@ def test_cl(
             correct += (pred.argmax(1) == y).type(torch.float).sum().item()
     loss /= num_batches
     correct /= size
-    logging.info(f'test results: accuracy = {correct:4.2%}, loss = {loss:f}')
+    logging.info(f'{name} results: accuracy = {correct:%}, loss = {loss:f}')
+    return correct, loss

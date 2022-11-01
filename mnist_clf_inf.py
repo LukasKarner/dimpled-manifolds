@@ -2,17 +2,15 @@ from torch import nn
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from torchvision.transforms import ToTensor
-from models import MnistAEC
+from models import MnistMLP
 from utils import *
 import logging
 
-set_up_log('mnist_aec')
+set_up_log('mnist_clf_inf')
 
 # set parameters
-batch_size = 144
-loss_fn = nn.MSELoss()
-lr = 0.001
-epochs = 1#000
+batch_size = 200
+loss_fn = nn.CrossEntropyLoss()
 
 logging.info('loading data')
 
@@ -35,20 +33,13 @@ logging.info(f'using {device} device')
 device = torch.device(device)
 
 # preparing model
-model = MnistAEC().to(device)
-optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+model = MnistMLP().to(device)
+model.load_state_dict(torch.load('MnistMLP.pth', map_location=device), strict=True)
 
 logging.info('model ready')
-logging.info('optimising model')
+logging.info('running trials')
 
-# optimising model
-for i in range(epochs):
-    logging.info(f'epoch {i + 1}')
-    train_ae(train_dataloader, model, loss_fn, optimizer, device)
-    if (i + 1) % 10 == 0:
-        test_ae(test_dataloader, model, loss_fn, device)
+test_cl(train_dataloader, model, loss_fn, device, name='training')
+test_cl(test_dataloader, model, loss_fn, device)
 
-logging.info('optimisation complete')
-logging.info('saving model')
-torch.save(model.state_dict(), 'MnistAEC.pth')
-logging.info('model saved')
+logging.info('trials complete')

@@ -18,8 +18,8 @@ epochs = 200
 logging.info('loading data')
 
 # loading data
-training_data = datasets.MNIST(root='data', download=True, train=True, transform=ToTensor())
-test_data = datasets.MNIST(root='data', download=True, train=False, transform=ToTensor())
+training_data = datasets.MNIST(root='data.nosync', download=True, train=True, transform=ToTensor())
+test_data = datasets.MNIST(root='data.nosync', download=True, train=False, transform=ToTensor())
 
 # create dataloaders
 train_dataloader = DataLoader(training_data, batch_size, True)
