@@ -2,4 +2,5 @@
 .idea
 __pycache__
 *.log
-/data
+/data.nosync
+*.pth
