@@ -30,7 +30,6 @@ def set_up_log(filename):
         format='%(asctime)s %(levelname)s: %(message)s',
         level=logging.DEBUG,
         filename=filename + '.log',
-        encoding='utf-8',
     )
     plt.set_loglevel('warning')
 
@@ -40,7 +39,6 @@ def log_to_stdout():
         format='%(asctime)s %(levelname)s: %(message)s',
         level=logging.DEBUG,
         stream=sys.stdout,
-        encoding='utf-8',
     )
     plt.set_loglevel('warning')
 
