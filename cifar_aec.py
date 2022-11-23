@@ -11,7 +11,7 @@ set_up_log('cifar_aec')
 # set parameters
 batch_size = 32
 loss_fn = nn.MSELoss()
-lr = 0.00001
+lr = 0.001
 epochs = 400
 
 logging.info('loading data')

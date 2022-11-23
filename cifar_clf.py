@@ -1,15 +1,13 @@
-from torch import nn
 from torch.utils.data import DataLoader
 from torchvision import datasets
-from torchvision.transforms import ToTensor
+from torchvision.transforms import ToTensor, Pad, RandomCrop, RandomHorizontalFlip, Normalize, Compose
 from models import CifarCNN
 from utils import *
-import logging
 
 set_up_log('cifar_clf')
 
 # set parameters
-batch_size = 256
+batch_size = 200
 loss_fn = nn.CrossEntropyLoss()
 lr = 0.001
 epochs = 150
@@ -17,8 +15,23 @@ epochs = 150
 logging.info('loading data')
 
 # loading data
-training_data = datasets.CIFAR10(root='data.nosync', download=True, train=True, transform=ToTensor())
-test_data = datasets.CIFAR10(root='data.nosync', download=True, train=False, transform=ToTensor())
+training_data = datasets.CIFAR10(root='data.nosync',
+                                 download=True,
+                                 train=True,
+                                 transform=Compose([Pad(4),
+                                                    RandomCrop(32),
+                                                    RandomHorizontalFlip(),
+                                                    ToTensor(),
+                                                    Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+                                                   ),
+                                 )
+test_data = datasets.CIFAR10(root='data.nosync',
+                             download=True,
+                             train=False,
+                             transform=Compose([ToTensor(),
+                                                Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+                                               ),
+                             )
 
 # create dataloaders
 train_dataloader = DataLoader(training_data, batch_size, True)
@@ -28,14 +41,10 @@ logging.info('loading data complete')
 logging.info('preparing model')
 
 # preparing device
-device = 'mps' if torch.backends.mps.is_available() \
-    else 'cuda' if torch.cuda.is_available() \
-    else 'cpu'
-logging.info(f'using {device} device')
-device = torch.device(device)
+device = get_device()
 
 # preparing model
-model = CifarCNN(n_channel=64).to(device)
+model = CifarCNN(n_channel=128).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, [80, 120])
 
