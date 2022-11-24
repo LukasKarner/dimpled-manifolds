@@ -15,23 +15,25 @@ epochs = 150
 logging.info('loading data')
 
 # loading data
-training_data = datasets.CIFAR10(root='data.nosync',
-                                 download=True,
-                                 train=True,
-                                 transform=Compose([Pad(4),
-                                                    RandomCrop(32),
-                                                    RandomHorizontalFlip(),
-                                                    ToTensor(),
-                                                    Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
-                                                   ),
-                                 )
-test_data = datasets.CIFAR10(root='data.nosync',
-                             download=True,
-                             train=False,
-                             transform=Compose([ToTensor(),
-                                                Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
-                                               ),
-                             )
+training_data = datasets.CIFAR10(
+    root='data.nosync',
+    download=True,
+    train=True,
+    transform=Compose([Pad(4),
+                      RandomCrop(32),
+                      RandomHorizontalFlip(),
+                      ToTensor(),
+                      Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+                      ),
+)
+test_data = datasets.CIFAR10(
+    root='data.nosync',
+    download=True,
+    train=False,
+    transform=Compose([ToTensor(),
+                       Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+                      ),
+)
 
 # create dataloaders
 train_dataloader = DataLoader(training_data, batch_size, True)
