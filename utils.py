@@ -1,5 +1,6 @@
 import torch
 from torch import nn
+from torchvision.transforms import ToTensor, Pad, RandomCrop, RandomHorizontalFlip, Normalize, Compose
 from numpy import linspace
 import matplotlib.pyplot as plt
 import logging
@@ -18,6 +19,21 @@ def get_device():
             device = device + ':' + i
     logging.info(f'using {device} device')
     return torch.device(device)
+
+
+def cifar_train_transorm():
+    return Compose([Pad(4),
+                    RandomCrop(32),
+                    RandomHorizontalFlip(),
+                    ToTensor(),
+                    Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+                   )
+
+
+def cifar_eval_transform():
+    return Compose([ToTensor(),
+                    Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+                   )
 
 
 #########################

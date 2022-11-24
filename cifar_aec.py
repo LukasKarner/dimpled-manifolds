@@ -1,6 +1,5 @@
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets
-from torchvision.transforms import ToTensor, Pad, RandomCrop, RandomHorizontalFlip, Normalize, Compose
 from models import VGG16
 from utils import *
 
@@ -19,12 +18,7 @@ training_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=True,
-    transform=Compose([Pad(4),
-                       RandomCrop(32),
-                       RandomHorizontalFlip(),
-                       ToTensor(),
-                       Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
-                      ),
+    transform=cifar_train_transorm(),
 )
 training_classes = torch.tensor(training_data.targets)
 training_ind = (training_classes == 0) | (training_classes == 1)
@@ -34,9 +28,7 @@ test_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=False,
-    transform=Compose([ToTensor(),
-                       Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
-                      ),
+    transform=cifar_eval_transform(),
 )
 test_classes = torch.tensor(test_data.targets)
 test_ind = (test_classes == 0) | (test_classes == 1)

@@ -17,17 +17,13 @@ training_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=True,
-    transform=Compose([ToTensor(),
-                      Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
-                      ),
+    transform=cifar_eval_transform(),
 )
 test_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=False,
-    transform=Compose([ToTensor(),
-                       Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
-                      ),
+    transform=cifar_eval_transform(),
 )
 
 # create dataloaders
