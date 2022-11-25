@@ -1,6 +1,5 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets
-from torchvision.transforms import ToTensor, Normalize, Compose
 from models import CifarCNN
 from utils import *
 
@@ -17,13 +16,13 @@ training_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=True,
-    transform=cifar_eval_transform(),
+    transform=eval_transform(),
 )
 test_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=False,
-    transform=cifar_eval_transform(),
+    transform=eval_transform(),
 )
 
 # create dataloaders

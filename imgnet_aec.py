@@ -1,37 +1,35 @@
 from torch.utils.data import DataLoader, Subset
-from torchvision import datasets
+from torchvision import datasets, models
 from models import VGG16
 from utils import *
 
-set_up_log('cifar_aec')
+set_up_log('imgnet_aec')
 
 # set parameters
 batch_size = 32
 loss_fn = nn.MSELoss()
-lr = 0.001
-epochs = 400
+lr = 0.0001
+epochs = 325
 
 logging.info('loading data')
 
 # loading data
-training_data = datasets.CIFAR10(
-    root='data.nosync',
-    download=True,
-    train=True,
-    transform=train_transform(32),
+training_data = datasets.ImageNet(
+    root=get_imgnet_root(),
+    split='train',
+    transform=models.ResNet50_Weights.DEFAULT.transforms(),
 )
 training_classes = torch.tensor(training_data.targets)
-training_ind = (training_classes == 0) | (training_classes == 1)
+training_ind = (training_classes == 1) | (training_classes == 2)
 training_data = Subset(training_data, torch.nonzero(training_ind))
 
-test_data = datasets.CIFAR10(
-    root='data.nosync',
-    download=True,
-    train=False,
-    transform=eval_transform(),
+test_data = datasets.ImageNet(
+    root=get_imgnet_root(),
+    split='val',
+    transform=models.ResNet50_Weights.DEFAULT.transforms(),
 )
 test_classes = torch.tensor(test_data.targets)
-test_ind = (test_classes == 0) | (test_classes == 1)
+test_ind = (test_classes == 1) | (test_classes == 2)
 test_data = Subset(test_data, torch.nonzero(test_ind))
 
 # create dataloaders
@@ -61,5 +59,5 @@ for i in range(epochs):
 
 logging.info('optimisation complete')
 logging.info('saving model')
-torch.save(model.state_dict(), 'CifarAEC.pth')
+torch.save(model.state_dict(), 'ImgNetAEC.pth')
 logging.info('model saved')

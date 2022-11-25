@@ -1,10 +1,16 @@
 import torch
 from torch import nn
 from torchvision.transforms import ToTensor, Pad, RandomCrop, RandomHorizontalFlip, Normalize, Compose
-from numpy import linspace
 import matplotlib.pyplot as plt
 import logging
 import sys
+import platform
+import os
+
+
+#####################
+# general utilities #
+#####################
 
 
 def get_device():
@@ -13,7 +19,7 @@ def get_device():
         else 'cpu'
     if device == 'cuda':
         n = torch.cuda.device_count()
-        if n > 0:
+        if n > 1:
             i = input(f'enter cuda index ({n} devices available): ')
             assert isinstance(int(i), int)
             device = device + ':' + i
@@ -21,19 +27,42 @@ def get_device():
     return torch.device(device)
 
 
-def cifar_train_transorm():
+def get_imgnet_root():
+    system = platform.system()
+    if system == 'Darwin':
+        return 'data.nosync'
+    elif system == 'Linux':
+        return f'media/data/{os.getlogin()}_data'
+    else:
+        raise Exception
+
+
+#########################
+# image transformations #
+#########################
+
+
+def train_transform(size):
     return Compose([Pad(4),
-                    RandomCrop(32),
+                    RandomCrop(size),
                     RandomHorizontalFlip(),
                     ToTensor(),
                     Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
                    )
 
 
-def cifar_eval_transform():
+def eval_transform():
     return Compose([ToTensor(),
                     Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
                    )
+
+
+def inv_scaling():
+    return Normalize((-1, -1, -1), (2, 2, 2))
+
+
+def inv_imgnet_scaling():
+    return Normalize((-0.485/0.229, -0.456/0.224, -0.406/0.225), (1/0.229, 1/0.224, 1/0.225))
 
 
 #########################
@@ -70,9 +99,11 @@ def train_ae(
         loss_fn,
         optimizer,
         device,
+        verbose: int = 6
 ):
     size = len(dataloader)
-    checkpoints = linspace(0, size - 1, 6, dtype=int)
+    if verbose:
+        checkpoints = torch.linspace(0, size - 1, verbose, dtype=int)
     model.train()
     for batch, (X, y) in enumerate(dataloader):
         X, y = X.to(device), y.to(device)
@@ -86,7 +117,7 @@ def train_ae(
         loss.backward()
         optimizer.step()
 
-        if batch in checkpoints:
+        if verbose and batch in checkpoints:
             loss, pct = loss.item(), batch / size
             logging.info(f'{pct:4.0%} | loss = {loss:f}')
 
@@ -97,15 +128,20 @@ def test_ae(
         loss_fn,
         device,
         name='test',
+        verbose: int = None,
 ):
     num_batches = len(dataloader)
+    if verbose:
+        checkpoints = torch.linspace(0, num_batches - 1, verbose, dtype=int)
     model.eval()
     loss = 0
     with torch.no_grad():
-        for X, y in dataloader:
+        for batch, (X, y) in enumerate(dataloader):
             X, y = X.to(device), y.to(device)
             pred = model(X)
             loss += loss_fn(pred, X).item()
+            if verbose and batch in checkpoints:
+                logging.info(f'{name} progress: {batch/num_batches:.0%}')
     loss /= num_batches
     logging.info(f'{name} results: loss = {loss:f}')
     return loss
@@ -117,9 +153,11 @@ def train_cl(
         loss_fn,
         optimizer,
         device,
+        verbose: int = 6,
 ):
     size = len(dataloader)
-    checkpoints = linspace(0, size - 1, 6, dtype=int)
+    if verbose:
+        checkpoints = torch.linspace(0, size - 1, verbose, dtype=int)
     model.train()
     for batch, (X, y) in enumerate(dataloader):
         X, y = X.to(device), y.to(device)
@@ -133,7 +171,7 @@ def train_cl(
         loss.backward()
         optimizer.step()
 
-        if batch in checkpoints:
+        if verbose and batch in checkpoints:
             loss, pct, acc = loss.item(), batch / size, (pred.argmax(1) == y).type(torch.float).mean().item()
             logging.info(f'{pct:4.0%} | accuracy = {acc:7.2%} | loss = {loss:f}')
 
@@ -144,17 +182,22 @@ def test_cl(
         loss_fn,
         device,
         name='test',
+        verbose: int = None,
 ):
     size = len(dataloader.dataset)
     num_batches = len(dataloader)
+    if verbose:
+        checkpoints = torch.linspace(0, num_batches - 1, verbose, dtype=int)
     model.eval()
     loss = correct = 0
     with torch.no_grad():
-        for X, y in dataloader:
+        for batch, (X, y) in enumerate(dataloader):
             X, y = X.to(device), y.to(device)
             pred = model(X)
             loss += loss_fn(pred, y).item()
             correct += (pred.argmax(1) == y).type(torch.float).sum().item()
+            if verbose and batch in checkpoints:
+                logging.info(f'{name} progress: {batch/num_batches:.0%}')
     loss /= num_batches
     correct /= size
     logging.info(f'{name} results: accuracy = {correct:%}, loss = {loss:f}')
@@ -169,7 +212,7 @@ def test_cl(
 def get_pred(logits):
     sm = nn.Softmax()
     probs = sm(logits)
-    return probs.argmax(), probs.max()
+    return probs.argmax(), probs.max(), probs
 
 
 def adv_example_plot(examples, name=None):
@@ -181,11 +224,11 @@ def adv_example_plot(examples, name=None):
         # TODO add confidences
         ax = axs[i]
         ax[0].imshow(x.squeeze(), cmap='gray', vmin=0., vmax=1.)
-        y, p = get_pred(logits_o)
+        y, p, _ = get_pred(logits_o)
         ax[0].set_title(f'{y} w.p. {p:.3f}')
         ax[0].axis('off')
         ax[1].imshow(perturbed.squeeze(), cmap='gray', vmin=0., vmax=1.)
-        y, p = get_pred(logits_a)
+        y, p, _ = get_pred(logits_a)
         ax[1].set_title(f'{y} w.p. {p:.3f}')
         ax[1].axis('off')
         ax[2].imshow(delta.squeeze(), cmap='gray')
@@ -194,6 +237,29 @@ def adv_example_plot(examples, name=None):
     plt.tight_layout()
     if name:
         plt.savefig(name+'.pdf')
+    plt.show()
+
+
+def aec_example_plot(X, Y, name=None, inv=True):
+    inv_transform = inv_scaling()
+    n = len(X)
+    fig, axs = plt.subplots(n, 2, squeeze=False, figsize=(9, n * 4.5))
+    for i in range(n):
+        x, y = X[i], Y[i]
+        if inv:
+            x, y = inv_transform(x), inv_transform(y)
+        ax = axs[i]
+        d_2 = torch.norm(x-y)
+        d_s = torch.norm(x-y, float('inf'))
+        ax[0].imshow(x.squeeze(), cmap='gray', vmin=0., vmax=1.)
+        ax[0].set_title(f'')
+        ax[0].axis('off')
+        ax[1].imshow(y.squeeze(), cmap='gray', vmin=0., vmax=1.)
+        ax[1].set_title(f'')
+        ax[1].axis('off')
+    plt.tight_layout()
+    if name:
+        plt.savefig(name + '.pdf')
     plt.show()
 
 

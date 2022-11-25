@@ -18,13 +18,13 @@ training_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=True,
-    transform=cifar_train_transorm(),
+    transform=train_transform(32),
 )
 test_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=False,
-    transform=cifar_eval_transform(),
+    transform=eval_transform(),
 )
 
 # create dataloaders
