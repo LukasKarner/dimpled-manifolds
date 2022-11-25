@@ -32,7 +32,7 @@ def get_imgnet_root():
     if system == 'Darwin':
         return 'data.nosync'
     elif system == 'Linux':
-        return f'media/data/{os.getlogin()}_data'
+        return f'/media/data/{os.getlogin()}_data'
     else:
         raise Exception
 
