@@ -40,7 +40,7 @@ if __name__ == '__main__':
     logging.info('model ready')
     logging.info('running trials')
 
-    # test_cl(train_dataloader, model, loss_fn, device, name='training', verbose=6)
+    test_cl(train_dataloader, model, loss_fn, device, name='training', verbose=100)
     test_cl(test_dataloader, model, loss_fn, device, verbose=6)
 
     logging.info('trials complete')
