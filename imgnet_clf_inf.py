@@ -5,6 +5,7 @@ from utils import *
 if __name__ == '__main__':
 
     set_up_log('imgnet_clf_inf')
+    logging.getLogger("PIL.PngImagePlugin").setLevel(logging.INFO)
 
     # set parameters
     batch_size = 32

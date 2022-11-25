@@ -1,3 +1,5 @@
+import logging
+
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, models
 from models import VGG16
@@ -6,6 +8,7 @@ from utils import *
 if __name__ == '__main__':
 
     set_up_log('imgnet_aec')
+    logging.getLogger("PIL.PngImagePlugin").setLevel(logging.INFO)
 
     # set parameters
     batch_size = 32
