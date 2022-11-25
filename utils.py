@@ -72,7 +72,7 @@ def inv_imgnet_scaling():
 
 def set_up_log(filename):
     logging.basicConfig(
-        format='%(asctime)s %(levelname)s: %(message)s',
+        format='%(asctime)s %(levelname)s: %(module)s %(pathname)s',  # TODO remove again!
         level=logging.DEBUG,
         filename=filename + '.log',
     )
