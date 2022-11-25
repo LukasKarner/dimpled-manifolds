@@ -2,43 +2,45 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, models
 from utils import *
 
-set_up_log('imgnet_clf_inf')
+if __name__ == '__main__':
 
-# set parameters
-batch_size = 32
-loss_fn = nn.CrossEntropyLoss()
+    set_up_log('imgnet_clf_inf')
 
-logging.info('loading data')
+    # set parameters
+    batch_size = 32
+    loss_fn = nn.CrossEntropyLoss()
 
-# loading data
-training_data = datasets.ImageNet(
-    root=get_imgnet_root(),
-    split='train',
-    transform=models.ResNet50_Weights.DEFAULT.transforms(),
-)
-test_data = datasets.ImageNet(
-    root=get_imgnet_root(),
-    split='val',
-    transform=models.ResNet50_Weights.DEFAULT.transforms(),
-)
+    logging.info('loading data')
 
-# create dataloaders
-train_dataloader = DataLoader(training_data, batch_size, True)
-test_dataloader = DataLoader(test_data, batch_size, True)
+    # loading data
+    training_data = datasets.ImageNet(
+        root=get_imgnet_root(),
+        split='train',
+        transform=models.ResNet50_Weights.DEFAULT.transforms(),
+    )
+    test_data = datasets.ImageNet(
+        root=get_imgnet_root(),
+        split='val',
+        transform=models.ResNet50_Weights.DEFAULT.transforms(),
+    )
 
-logging.info('loading data complete')
-logging.info('preparing model')
+    # create dataloaders
+    train_dataloader = DataLoader(training_data, batch_size, True, pin_memory=True, num_workers=4, prefetch_factor=3)
+    test_dataloader = DataLoader(test_data, batch_size, True, pin_memory=True, num_workers=4, prefetch_factor=3)
 
-# preparing device
-device = get_device()
+    logging.info('loading data complete')
+    logging.info('preparing model')
 
-# preparing model
-model = models.resnet50(models.ResNet50_Weights.DEFAULT, progress=False).to(device)
+    # preparing device
+    device = get_device()
 
-logging.info('model ready')
-logging.info('running trials')
+    # preparing model
+    model = models.resnet50(models.ResNet50_Weights.DEFAULT, progress=False).to(device)
 
-test_cl(train_dataloader, model, loss_fn, device, name='training', verbose=6)
-test_cl(test_dataloader, model, loss_fn, device, verbose=6)
+    logging.info('model ready')
+    logging.info('running trials')
 
-logging.info('trials complete')
+    test_cl(train_dataloader, model, loss_fn, device, name='training', verbose=6)
+    test_cl(test_dataloader, model, loss_fn, device, verbose=6)
+
+    logging.info('trials complete')
