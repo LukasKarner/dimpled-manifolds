@@ -51,14 +51,14 @@ def train_transform(size):
                    )
 
 
-def eval_transform():
+def eval_transform(n_channels: int = 3):
     return Compose([ToTensor(),
-                    Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+                    Normalize([0.5] * n_channels, [0.5] * n_channels)]
                    )
 
 
-def inv_scaling():
-    return Normalize((-1, -1, -1), (2, 2, 2))
+def inv_scaling(n_channels: int = 3):
+    return Normalize([-1] * n_channels, [2] * n_channels)
 
 
 def inv_imgnet_scaling():
