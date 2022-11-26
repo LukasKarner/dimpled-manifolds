@@ -240,27 +240,30 @@ def adv_example_plot(examples, name=None):
     plt.show()
 
 
-def aec_example_plot(X, Y, name=None, inv=True):
-    inv_transform = inv_scaling()
+def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transform=None):
     n = len(X)
+    assert n == len(Y)
+    if transform:
+        X, Y = transform(X), transform(Y)
+    if len(X.size()) == 4:
+        X, Y = torch.permute(X, (0, 2, 3, 1)), torch.permute(Y, (0, 2, 3, 1))
     fig, axs = plt.subplots(n, 2, squeeze=False, figsize=(9, n * 4.5))
     for i in range(n):
         x, y = X[i], Y[i]
-        if inv:
-            x, y = inv_transform(x), inv_transform(y)
         ax = axs[i]
         d_2 = torch.norm(x-y)
         d_s = torch.norm(x-y, float('inf'))
         ax[0].imshow(x.squeeze(), cmap='gray', vmin=0., vmax=1.)
-        ax[0].set_title(f'')
+        ax[0].set_title(f'original\nl_2 distance = {d_2:.5f}')
         ax[0].axis('off')
         ax[1].imshow(y.squeeze(), cmap='gray', vmin=0., vmax=1.)
-        ax[1].set_title(f'')
+        ax[1].set_title(f'reconstruction\nl_inf distance = {d_s:.5f}')
         ax[1].axis('off')
     plt.tight_layout()
     if name:
         plt.savefig(name + '.pdf')
-    plt.show()
+    else:
+        plt.show()
 
 
 ###########################################

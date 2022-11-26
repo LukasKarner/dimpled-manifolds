@@ -15,8 +15,18 @@ loss_fn = nn.CrossEntropyLoss()
 logging.info('loading data')
 
 # loading data
-training_data = datasets.MNIST(root='data.nosync', download=True, train=True, transform=ToTensor())
-test_data = datasets.MNIST(root='data.nosync', download=True, train=False, transform=ToTensor())
+training_data = datasets.MNIST(
+    root='data.nosync',
+    download=True,
+    train=True,
+    transform=eval_transform(),  # TODO
+)
+test_data = datasets.MNIST(
+    root='data.nosync',
+    download=True,
+    train=False,
+    transform=eval_transform(),  # TODO
+)
 
 # create dataloaders
 train_dataloader = DataLoader(training_data, batch_size, True)

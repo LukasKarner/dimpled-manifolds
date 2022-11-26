@@ -212,6 +212,7 @@ class segnetUp3(nn.Module):
         outputs = self.conv3(outputs)
         return outputs
 
+
 class VGG16(nn.Module):
     def __init__(self):
         super().__init__()

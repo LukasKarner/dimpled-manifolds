@@ -1,5 +1,3 @@
-import logging
-
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, models
 from models import VGG16
@@ -38,8 +36,22 @@ if __name__ == '__main__':
     test_data = Subset(test_data, torch.nonzero(test_ind))
 
     # create dataloaders
-    train_dataloader = DataLoader(training_data, batch_size, True, pin_memory=True, num_workers=16, prefetch_factor=4)
-    test_dataloader = DataLoader(test_data, batch_size, True, pin_memory=True, num_workers=16, prefetch_factor=4)
+    train_dataloader = DataLoader(
+        training_data,
+        batch_size,
+        True,
+        pin_memory=True,
+        num_workers=16,
+        prefetch_factor=4
+    )
+    test_dataloader = DataLoader(
+        test_data,
+        batch_size,
+        True,
+        pin_memory=True,
+        num_workers=16,
+        prefetch_factor=4
+    )
 
     logging.info('loading data complete')
     logging.info('preparing model')
