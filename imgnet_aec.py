@@ -62,7 +62,7 @@ if __name__ == '__main__':
     # preparing model
     model = VGG16().to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.8, patience=7)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.8, patience=7, verbose=True)
 
 
     logging.info('model ready')

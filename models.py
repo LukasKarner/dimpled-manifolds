@@ -130,7 +130,7 @@ class conv2DBatchNormRelu(nn.Module):
             padding,
             bias=True,
             dilation=1,
-            with_relu=True,
+            transform=True,
     ):
         super().__init__()
 
@@ -142,12 +142,12 @@ class conv2DBatchNormRelu(nn.Module):
                              bias=bias,
                              dilation=dilation, )
 
-        if with_relu:
+        if transform:
             self.cbr_unit = nn.Sequential(conv_mod,
                                           nn.BatchNorm2d(int(n_filters)),
                                           nn.ReLU(inplace=True))
         else:
-            self.cbr_unit = nn.Sequential(conv_mod, nn.BatchNorm2d(int(n_filters)))
+            self.cbr_unit = nn.Sequential(conv_mod)
 
     def forward(self, inputs):
         outputs = self.cbr_unit(inputs)
@@ -185,11 +185,11 @@ class segnetDown3(nn.Module):
 
 
 class segnetUp2(nn.Module):
-    def __init__(self, in_size, out_size, out_relu=True):
+    def __init__(self, in_size, out_size, transform=True):
         super().__init__()
         self.unpool = nn.Upsample(scale_factor=2)
         self.conv1 = conv2DBatchNormRelu(in_size, in_size, 3, 1, 1)
-        self.conv2 = conv2DBatchNormRelu(in_size, out_size, 3, 1, 1, with_relu=out_relu)
+        self.conv2 = conv2DBatchNormRelu(in_size, out_size, 3, 1, 1, transform=transform)
 
     def forward(self, inputs):
         outputs = self.unpool(inputs)
@@ -228,7 +228,7 @@ class VGG16(nn.Module):
         self.up4 = segnetUp3(512, 256)
         self.up3 = segnetUp3(256, 128)
         self.up2 = segnetUp2(128, 64)
-        self.up1 = segnetUp2(64, 3, out_relu=False)
+        self.up1 = segnetUp2(64, 3, transform=False)
 
     def forward(self, inputs):
         down1 = self.down1(inputs)
