@@ -20,7 +20,7 @@ if __name__ == '__main__':
     training_data = datasets.ImageNet(
         root=get_imgnet_root(),
         split='train',
-        transform=models.ResNet50_Weights.DEFAULT.transforms(),
+        transform=Compose([models.ResNet50_Weights.DEFAULT.transforms(), inv_imgnet_scaling()]),  # TODO
     )
     training_classes = torch.tensor(training_data.targets)
     training_ind = (training_classes == 1) | (training_classes == 2)
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     test_data = datasets.ImageNet(
         root=get_imgnet_root(),
         split='val',
-        transform=models.ResNet50_Weights.DEFAULT.transforms(),
+        transform=Compose([models.ResNet50_Weights.DEFAULT.transforms(), inv_imgnet_scaling()]),  # TODO
     )
     test_classes = torch.tensor(test_data.targets)
     test_ind = (test_classes == 1) | (test_classes == 2)

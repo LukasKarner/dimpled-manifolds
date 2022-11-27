@@ -1,4 +1,3 @@
-import torch.optim.lr_scheduler
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets
 from models import VGG16
@@ -21,7 +20,7 @@ if __name__ == '__main__':
         root='data.nosync',
         download=True,
         train=True,
-        transform=eval_transform(),  # TODO
+        transform=ToTensor(),  # TODO
     )
     training_classes = torch.tensor(training_data.targets)
     training_ind = (training_classes == 0) | (training_classes == 8)
@@ -31,7 +30,7 @@ if __name__ == '__main__':
         root='data.nosync',
         download=True,
         train=False,
-        transform=eval_transform(),
+        transform=ToTensor(),  # TODO
     )
     test_classes = torch.tensor(test_data.targets)
     test_ind = (test_classes == 0) | (test_classes == 8)
