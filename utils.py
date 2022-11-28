@@ -271,6 +271,14 @@ def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transfo
 ###########################################
 
 
+class MarginLoss(torch.nn.Module):
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
+        return torch.mean(x - x[0, y.item()])
+
+
 def pgd_attack(
         x,
         model,

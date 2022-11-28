@@ -10,7 +10,7 @@ if __name__ == '__main__':
     # set parameters
     batch_size = 32
     loss_fn = nn.MSELoss()
-    lr = 0.001
+    lr = 0.0001
     epochs = 400
 
     logging.info('loading data')
@@ -20,7 +20,7 @@ if __name__ == '__main__':
         root='data.nosync',
         download=True,
         train=True,
-        transform=ToTensor(),  # TODO
+        transform=ToTensor(),
     )
     training_classes = torch.tensor(training_data.targets)
     training_ind = (training_classes == 0) | (training_classes == 1)
@@ -30,7 +30,7 @@ if __name__ == '__main__':
         root='data.nosync',
         download=True,
         train=False,
-        transform=ToTensor(),  # TODO
+        transform=ToTensor(),
     )
     test_classes = torch.tensor(test_data.targets)
     test_ind = (test_classes == 0) | (test_classes == 1)

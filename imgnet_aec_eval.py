@@ -15,7 +15,7 @@ logging.info('loading data')
 training_data = datasets.ImageNet(
     root=get_imgnet_root(),
     split='train',
-    transform=Compose([models.ResNet50_Weights.DEFAULT.transforms(), inv_imgnet_scaling()]),  # TODO
+    transform=Compose([models.ResNet50_Weights.DEFAULT.transforms(), inv_imgnet_scaling()]),
 )
 training_classes = torch.tensor(training_data.targets)
 training_ind = (training_classes == 1) | (training_classes == 2)
@@ -24,7 +24,7 @@ training_data = Subset(training_data, torch.nonzero(training_ind))
 test_data = datasets.ImageNet(
     root=get_imgnet_root(),
     split='val',
-    transform=Compose([models.ResNet50_Weights.DEFAULT.transforms(), inv_imgnet_scaling()]),  # TODO
+    transform=Compose([models.ResNet50_Weights.DEFAULT.transforms(), inv_imgnet_scaling()]),
 )
 test_classes = torch.tensor(test_data.targets)
 test_ind = (test_classes == 1) | (test_classes == 2)
@@ -38,7 +38,7 @@ logging.info('loading data complete')
 logging.info('preparing model')
 
 # preparing device
-device = 'cpu'
+device = get_device()
 
 # preparing model
 model = VGG16().to(device)
@@ -53,7 +53,7 @@ X = X.to(device)
 Y = model(X)
 
 X, Y = X.to('cpu').detach(), torch.clamp(Y.to('cpu').detach(), 0., 1.)
-aec_example_plot(X, Y, 'train')  # TODO
+aec_example_plot(X, Y, 'train')
 
 for X, labels in test_dataloader:
     break
@@ -61,4 +61,4 @@ X = X.to(device)
 Y = model(X)
 
 X, Y = X.to('cpu').detach(), torch.clamp(Y.to('cpu').detach(), 0., 1.)
-aec_example_plot(X, Y, 'test')  # TODO
+aec_example_plot(X, Y, 'test')

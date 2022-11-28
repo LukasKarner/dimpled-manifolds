@@ -19,13 +19,13 @@ training_data = datasets.MNIST(
     root='data.nosync',
     download=True,
     train=True,
-    transform=eval_transform(),  # TODO
+    transform=eval_transform(1),
 )
 test_data = datasets.MNIST(
     root='data.nosync',
     download=True,
     train=False,
-    transform=eval_transform(),  # TODO
+    transform=eval_transform(1),
 )
 
 # create dataloaders

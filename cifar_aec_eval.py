@@ -15,7 +15,7 @@ training_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=True,
-    transform=ToTensor(),  # TODO
+    transform=ToTensor(),
 )
 training_classes = torch.tensor(training_data.targets)
 training_ind = (training_classes == 0) | (training_classes == 1)
@@ -25,7 +25,7 @@ test_data = datasets.CIFAR10(
     root='data.nosync',
     download=True,
     train=False,
-    transform=ToTensor(),  # TODO
+    transform=ToTensor(),
 )
 test_classes = torch.tensor(test_data.targets)
 test_ind = (test_classes == 0) | (test_classes == 1)
@@ -39,7 +39,7 @@ logging.info('loading data complete')
 logging.info('preparing model')
 
 # preparing device
-device = 'cpu'  # TODO
+device = get_device()
 
 # preparing model
 model = VGG16().to(device)
@@ -54,7 +54,7 @@ X = X.to(device)
 Y = model(X)
 
 X, Y = X.to('cpu').detach(), torch.clamp(Y.to('cpu').detach(), 0., 1.)
-aec_example_plot(X, Y, 'train')  # TODO
+aec_example_plot(X, Y, 'train')
 
 for X, labels in test_dataloader:
     break
@@ -62,4 +62,4 @@ X = X.to(device)
 Y = model(X)
 
 X, Y = X.to('cpu').detach(), torch.clamp(Y.to('cpu').detach(), 0., 1.)
-aec_example_plot(X, Y, 'test')  # TODO
+aec_example_plot(X, Y, 'test')
