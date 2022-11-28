@@ -23,7 +23,7 @@ if __name__ == '__main__':
         transform=ToTensor(),  # TODO
     )
     training_classes = torch.tensor(training_data.targets)
-    training_ind = (training_classes == 0) | (training_classes == 8)
+    training_ind = (training_classes == 0) | (training_classes == 1)
     training_data = Subset(training_data, torch.nonzero(training_ind))
 
     test_data = datasets.CIFAR10(
@@ -33,7 +33,7 @@ if __name__ == '__main__':
         transform=ToTensor(),  # TODO
     )
     test_classes = torch.tensor(test_data.targets)
-    test_ind = (test_classes == 0) | (test_classes == 8)
+    test_ind = (test_classes == 0) | (test_classes == 1)
     test_data = Subset(test_data, torch.nonzero(test_ind))
 
     # create dataloaders
