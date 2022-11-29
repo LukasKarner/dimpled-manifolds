@@ -210,34 +210,44 @@ def test_cl(
 
 
 def get_pred(logits):
-    sm = nn.Softmax()
-    probs = sm(logits)
-    return probs.argmax(), probs.max(), probs
+    sm = nn.Softmax(1)
+    probs = sm(logits).squeeze()
+    return probs.argmax().item(), probs.max().item(), probs
 
 
-def adv_example_plot(examples, name=None):
+def adv_example_plot(examples, name=None, transform=None, labels=None):
     n = len(examples)
     fig, axs = plt.subplots(n, 3, squeeze=False, figsize=(9, n*3))
     for i in range(n):
         x, perturbed, logits_o, logits_a = examples[i]
+        if transform:
+            x, perturbed = transform(x), transform(perturbed)
+        if len(x.size()) == 4:
+            x, perturbed = torch.permute(x, (0, 2, 3, 1)), torch.permute(perturbed, (0, 2, 3, 1))
         delta = perturbed - x
-        # TODO add confidences
+        d = torch.norm(delta)
+        delta = (delta - delta.min()) / (delta.max() - delta.min())
         ax = axs[i]
         ax[0].imshow(x.squeeze(), cmap='gray', vmin=0., vmax=1.)
         y, p, _ = get_pred(logits_o)
-        ax[0].set_title(f'{y} w.p. {p:.3f}')
+        if labels:
+            y = labels[y]
+        ax[0].set_title(f'label {y} w.p. {p:.3f}')
         ax[0].axis('off')
         ax[1].imshow(perturbed.squeeze(), cmap='gray', vmin=0., vmax=1.)
         y, p, _ = get_pred(logits_a)
-        ax[1].set_title(f'{y} w.p. {p:.3f}')
+        if labels:
+            y = labels[y]
+        ax[1].set_title(f'label {y} w.p. {p:.3f}')
         ax[1].axis('off')
-        ax[2].imshow(delta.squeeze(), cmap='gray')
-        ax[2].set_title(f'l_2 norm = {torch.norm(delta):.3f}')
+        ax[2].imshow(delta.squeeze(), cmap='gray', vmin=0., vmax=1.)
+        ax[2].set_title(f'difference l_2 norm = {d:.3f}')
         ax[2].axis('off')
     plt.tight_layout()
     if name:
         plt.savefig(name+'.pdf')
-    plt.show()
+    else:
+        plt.show()
 
 
 def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transform=None):
@@ -271,7 +281,7 @@ def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transfo
 ###########################################
 
 
-class MarginLoss(torch.nn.Module):
+class MarginLoss(nn.Module):
     def __init__(self):
         super().__init__()
 
@@ -280,76 +290,82 @@ class MarginLoss(torch.nn.Module):
 
 
 def pgd_attack(
-        x,
+        x: torch.Tensor,
         model,
         epsilon,
+        step_size,
         loss_fn=nn.CrossEntropyLoss(),
         target=None,
-        norm='2',
         manifold_projection=None,
         max_iter=50,
 ):
-    x_orig = torch.clone(x).detach()
-    assert norm == '2', 'inf-norm not yet implemented'
+    x_ = x.clone().detach()
+    assert epsilon > 0
 
     def projection(t):
-        d = torch.norm(t - x_orig, p=float(norm))
+        d = torch.norm(t - x)
         if d <= epsilon:
             return t
         else:
-            # TODO implement inf-norm-projection
-            return epsilon * t / d + x_orig * (1 - epsilon / d)
+            return epsilon * t / d + x * (1 - epsilon / d)
 
     targeted = bool(target)
     model.eval()
-    if not targeted:
-        target = model(x).argmax(1)
-    assert epsilon > 0
-    epsilon = epsilon if targeted else -1 * epsilon
+    with torch.no_grad():
+        if not targeted:
+            target = model(x).argmax(1)
+    assert step_size > 0
+    step_size = step_size if targeted else -1 * step_size
 
     for i in range(max_iter):
-        x.requires_grad = True
-        pred = model(x)
+        x_.requires_grad_(True)
+        pred = model(x_)
         if targeted ^ (pred.argmax(1).item() != target.item()):
             logging.info(f'pgd attack successful after {i} iterations')
-            return x.detach()
+            return x_.clone().detach()
         loss = loss_fn(pred, target)
         model.zero_grad()
         loss.backward()
-        grad = x.grad.data
-        grad = manifold_projection(grad) if manifold_projection else grad
-        grad_norm = torch.norm(grad, p=float(norm))
-        if grad_norm.item() == 0:
-            logging.info('pgd attack not successful: gradient = 0')
-            return x.detach()
-        grad = grad / grad_norm  # TODO implement inf-norm normalisation
-        x = x - epsilon * grad
-        x = torch.clamp(projection(x), 0, 1).detach()
+        grad = x_.grad.data
+        with torch.no_grad():
+            grad = manifold_projection(grad) if manifold_projection else grad
+            grad_norm = torch.norm(grad)
+            if grad_norm.item() == 0:
+                logging.info('pgd attack not successful: gradient == 0')
+                return x_.clone().detach()
+            grad = grad / grad_norm
+            x_ = x_ - step_size * grad
+            _ = torch.norm(x - x_)
+            x_ = torch.clamp(projection(x_), -1, 1)  # TODO fix for imagenet
     logging.info('pgd attack reached max_iter')
-    return x.detach()
+    return x_.clone().detach()
 
 
 def adv_attack_standard(
         model,
         dataloader,
         epsilon,
+        step_size,
         device,
         max_n=10,
         max_iter=50,
+        loss_fct=nn.CrossEntropyLoss()
 ):
     assert epsilon > 0
     model.eval()
     examples = []
     for x, y in dataloader:
         x, y = x.to(device), y.to(device)
-        pred_o = model(x)
-        if pred_o.argmax(1).item() != y.item():
-            continue
-        perturbed = pgd_attack(x, model, epsilon, max_iter=max_iter)
-        pred_a = model(perturbed)
-        if pred_a.argmax(1).item() != y.item():
-            examples.append((x.cpu().detach(), perturbed.cpu().detach(), pred_o.cpu(), pred_a.cpu()))
-            logging.info('adversarial example found')
-            if len(examples) == max_n:
-                break
+        with torch.no_grad():
+            pred_o = model(x)
+            if pred_o.argmax(1).item() != y.item():
+                continue
+        perturbed = pgd_attack(x, model, epsilon, step_size, max_iter=max_iter, loss_fn=loss_fct)
+        with torch.no_grad():
+            pred_a = model(perturbed)
+            if pred_a.argmax(1).item() != y.item():
+                examples.append((x.cpu().detach(), perturbed.cpu().detach(), pred_o.cpu(), pred_a.cpu()))
+                logging.info('adversarial example found')
+                if len(examples) == max_n:
+                    break
     return examples

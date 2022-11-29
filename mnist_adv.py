@@ -3,7 +3,7 @@ from torchvision import datasets
 from models import MnistMLP
 from utils import *
 
-log_to_stdout()
+set_up_log('mnist_adv')
 
 # set parameters
 batch_size = 1
@@ -12,11 +12,11 @@ loss_fn = MarginLoss()
 logging.info('loading data')
 
 # loading data
-# training_data = datasets.MNIST(root='data.nosync', download=True, train=True, transform=ToTensor())
-test_data = datasets.MNIST(root='data.nosync', download=True, train=False, transform=ToTensor())
+training_data = datasets.MNIST(root='data.nosync', download=True, train=True, transform=eval_transform(1))
+test_data = datasets.MNIST(root='data.nosync', download=True, train=False, transform=eval_transform(1))
 
 # create dataloaders
-# train_dataloader = DataLoader(training_data, batch_size, True)
+train_dataloader = DataLoader(training_data, batch_size, True)
 test_dataloader = DataLoader(test_data, batch_size, True)
 
 logging.info('loading data complete')
@@ -28,11 +28,14 @@ device = 'cpu'
 # preparing model
 model = MnistMLP().to(device)
 model.load_state_dict(torch.load('finals/MnistMLP.pth', map_location=device), strict=True)
-model.eval()
 
 logging.info('model ready')
 logging.info('running trials')
 
+examples = adv_attack_standard(model, train_dataloader, 2., 0.04, device, loss_fct=loss_fn)
+adv_example_plot(examples, 'mnist_adv_train', transform=inv_scaling(1))
 
+examples = adv_attack_standard(model, test_dataloader, 2., 0.04, device, loss_fct=loss_fn)
+adv_example_plot(examples, 'mnist_adv_test', transform=inv_scaling(1))
 
 logging.info('trials complete')

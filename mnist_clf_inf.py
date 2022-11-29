@@ -44,7 +44,7 @@ device = torch.device(device)
 
 # preparing model
 model = MnistMLP().to(device)
-model.load_state_dict(torch.load('MnistMLP.pth', map_location=device), strict=True)
+model.load_state_dict(torch.load('finals/MnistMLP.pth', map_location=device), strict=True)
 
 logging.info('model ready')
 logging.info('running trials')
