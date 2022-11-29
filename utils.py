@@ -286,7 +286,7 @@ class MarginLoss(nn.Module):
         super().__init__()
 
     def forward(self, x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
-        return torch.mean(x - x[0, y.item()])
+        return torch.mean(x - x[0, y.item()])  # TODO multi dim
 
 
 def pgd_attack(
@@ -300,6 +300,7 @@ def pgd_attack(
         max_iter=50,
 ):
     x_ = x.clone().detach()
+    device = x_.device
     assert epsilon > 0
 
     def projection(t):
@@ -308,6 +309,15 @@ def pgd_attack(
             return t
         else:
             return epsilon * t / d + x * (1 - epsilon / d)
+
+    if x.size()[-1] == 224:  # detect ImageNet input
+        mins = torch.tensor([-2.11790393, -2.03571429, -1.80444444]).resize_(3, 1, 1).to(device)
+        mins = torch.ones_like(x_) * mins
+        maxs = torch.tensor([2.2489083, 2.42857143, 2.64]).resize_(3, 1, 1).to(device)
+        maxs = torch.ones_like(x_) * maxs
+    else:
+        mins = 1.
+        maxs = 1.
 
     targeted = bool(target)
     model.eval()
@@ -336,7 +346,7 @@ def pgd_attack(
             grad = grad / grad_norm
             x_ = x_ - step_size * grad
             _ = torch.norm(x - x_)
-            x_ = torch.clamp(projection(x_), -1, 1)  # TODO fix for imagenet
+            x_ = torch.clamp(projection(x_), mins, maxs)
     logging.info('pgd attack reached max_iter')
     return x_.clone().detach()
 

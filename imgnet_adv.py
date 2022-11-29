@@ -40,9 +40,9 @@ logging.info('model ready')
 logging.info('running trials')
 
 examples = adv_attack_standard(model, train_dataloader, 2., 0.8, device, loss_fct=loss_fn)
-adv_example_plot(examples, 'imgnet_adv_train', transform=inv_imgnet_scaling(), labels=training_data.classes)
+adv_example_plot(examples, 'imgnet_adv_train', transform=inv_imgnet_scaling(), labels=[i[0] for i in training_data.classes])
 
 examples = adv_attack_standard(model, test_dataloader, 2., 0.8, device, loss_fct=loss_fn)
-adv_example_plot(examples, 'imgnet_adv_test', transform=inv_imgnet_scaling(), labels=test_data.classes)
+adv_example_plot(examples, 'imgnet_adv_test', transform=inv_imgnet_scaling(), labels=[i[0] for i in test_data.classes])
 
 logging.info('trials complete')
