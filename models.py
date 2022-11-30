@@ -149,6 +149,8 @@ class CifarAEC(nn.Module):
             nn.BatchNorm2d(num_features=128),
             nn.Softplus(beta=100),
             nn.ConvTranspose2d(in_channels=128, out_channels=3, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(num_features=3),
+            nn.Sigmoid(),  # TODO remove
         )
 
     def forward(
