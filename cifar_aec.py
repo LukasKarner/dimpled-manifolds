@@ -63,8 +63,6 @@ if __name__ == '__main__':
     # preparing model
     model = CifarAEC().to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-    # scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.8, patience=7, verbose=True)
-    # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, epochs)
 
     logging.info('model ready')
     logging.info('optimising model')
@@ -73,8 +71,6 @@ if __name__ == '__main__':
     for i in range(epochs):
         logging.info(f'epoch {i + 1}')
         train_ae(train_dataloader, model, loss_fn, optimizer, device)
-        # loss = test_ae(train_dataloader, model, loss_fn, device, 'training')
-        # scheduler.step()
         if (i + 1) % 10 == 0:
             test_ae(train_dataloader, model, loss_fn, device, 'training')
             test_ae(test_dataloader, model, loss_fn, device)
