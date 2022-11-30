@@ -1,6 +1,6 @@
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets
-from models import VGG16
+from models import CifarAEC
 from utils import *
 
 log_to_stdout()
@@ -39,10 +39,10 @@ logging.info('loading data complete')
 logging.info('preparing model')
 
 # preparing device
-device = get_device()
+device = torch.device('cpu')
 
 # preparing model
-model = VGG16().to(device)
+model = CifarAEC().to(device)
 model.load_state_dict(torch.load('temp/CifarAEC.pth', map_location=device), strict=True)
 model.eval()
 
@@ -54,7 +54,7 @@ X = X.to(device)
 Y = model(X)
 
 X, Y = X.to('cpu').detach(), torch.clamp(Y.to('cpu').detach(), 0., 1.)
-aec_example_plot(X, Y, 'train')
+aec_example_plot(X, Y, 'cifar_train')
 
 for X, labels in test_dataloader:
     break
@@ -62,4 +62,4 @@ X = X.to(device)
 Y = model(X)
 
 X, Y = X.to('cpu').detach(), torch.clamp(Y.to('cpu').detach(), 0., 1.)
-aec_example_plot(X, Y, 'test')
+aec_example_plot(X, Y, 'cifar_test')

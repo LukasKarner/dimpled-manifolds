@@ -10,7 +10,7 @@ if __name__ == '__main__':
     # set parameters
     batch_size = 32
     loss_fn = nn.MSELoss()
-    lr = 0.001
+    lr = 0.0001
     epochs = 400
 
     logging.info('loading data')
