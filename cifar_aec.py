@@ -1,6 +1,6 @@
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets
-from models import VGG16
+from models import CifarAEC
 from utils import *
 
 if __name__ == '__main__':
@@ -10,7 +10,7 @@ if __name__ == '__main__':
     # set parameters
     batch_size = 32
     loss_fn = nn.MSELoss()
-    lr = 0.0001
+    lr = 0.001
     epochs = 400
 
     logging.info('loading data')
@@ -61,10 +61,10 @@ if __name__ == '__main__':
     device = get_device()
 
     # preparing model
-    model = VGG16().to(device)
+    model = CifarAEC().to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
     # scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.8, patience=7, verbose=True)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, epochs)
+    # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, epochs)
 
     logging.info('model ready')
     logging.info('optimising model')
@@ -74,7 +74,7 @@ if __name__ == '__main__':
         logging.info(f'epoch {i + 1}')
         train_ae(train_dataloader, model, loss_fn, optimizer, device)
         # loss = test_ae(train_dataloader, model, loss_fn, device, 'training')
-        scheduler.step()
+        # scheduler.step()
         if (i + 1) % 10 == 0:
             test_ae(train_dataloader, model, loss_fn, device, 'training')
             test_ae(test_dataloader, model, loss_fn, device)

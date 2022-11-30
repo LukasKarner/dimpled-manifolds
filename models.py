@@ -115,6 +115,51 @@ def CifarCNN(n_channel=128):
     model = _CIFAR(layers, n_channel=8*n_channel, num_classes=10)
     return model
 
+
+class CifarAEC(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.encoder = nn.Sequential(
+            nn.Conv2d(in_channels=3, out_channels=128, kernel_size=4, stride=2, padding=1),
+            nn.BatchNorm2d(num_features=128),
+            nn.Softplus(beta=100),
+            nn.Conv2d(in_channels=128, out_channels=256, kernel_size=4, stride=2, padding=1),
+            nn.BatchNorm2d(num_features=256),
+            nn.Softplus(beta=100),
+            nn.Conv2d(in_channels=256, out_channels=512, kernel_size=4, stride=2, padding=1),
+            nn.BatchNorm2d(num_features=512),
+            nn.Softplus(beta=100),
+            nn.Conv2d(in_channels=512, out_channels=1024, kernel_size=4, stride=2, padding=1),
+            nn.BatchNorm2d(num_features=1024),
+            nn.Softplus(beta=100),
+            nn.Flatten(),
+            nn.Linear(4096, 128),
+        )
+        self.decoder = nn.Sequential(
+            nn.Linear(128, 16384),
+            nn.Softplus(beta=100),
+            nn.Unflatten(1, (1024, 4, 4)),
+            nn.ConvTranspose2d(in_channels=1024, out_channels=512, kernel_size=4, stride=2, padding=1),
+            nn.BatchNorm2d(num_features=512),
+            nn.Softplus(beta=100),
+            nn.ConvTranspose2d(in_channels=512, out_channels=256, kernel_size=4, stride=2, padding=1),
+            nn.BatchNorm2d(num_features=256),
+            nn.Softplus(beta=100),
+            nn.ConvTranspose2d(in_channels=256, out_channels=128, kernel_size=4, stride=2, padding=1),
+            nn.BatchNorm2d(num_features=128),
+            nn.Softplus(beta=100),
+            nn.ConvTranspose2d(in_channels=128, out_channels=3, kernel_size=1, stride=1, padding=0),
+        )
+
+    def forward(
+            self,
+            x,
+    ):
+        e = self.encoder(x)
+        d = self.decoder(e)
+        return d
+
+
 ############################################
 # VGG16 ####################################
 ############################################
