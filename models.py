@@ -293,7 +293,7 @@ class VGG16(nn.Module):
 
         return up1
 
-    def encode(self, inputs):
+    def encoder(self, inputs):
         down1 = self.down1(inputs)
         down2 = self.down2(down1)
         down3 = self.down3(down2)
@@ -301,7 +301,7 @@ class VGG16(nn.Module):
         down5 = self.down5(down4)
         return down5
 
-    def decode(self, inputs):
+    def decoder(self, inputs):
         up5 = self.up5(inputs)
         up4 = self.up4(up5)
         up3 = self.up3(up4)

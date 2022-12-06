@@ -62,7 +62,7 @@ def inv_scaling(n_channels: int = 3):
 
 
 def inv_imgnet_scaling():
-    return Normalize((-0.485/0.229, -0.456/0.224, -0.406/0.225), (1/0.229, 1/0.224, 1/0.225))
+    return Normalize((-0.485 / 0.229, -0.456 / 0.224, -0.406 / 0.225), (1 / 0.229, 1 / 0.224, 1 / 0.225))
 
 
 #########################
@@ -141,7 +141,7 @@ def test_ae(
             pred = model(X)
             loss += loss_fn(pred, X).item()
             if verbose and batch in checkpoints:
-                logging.info(f'{name} progress: {batch/num_batches:.0%}')
+                logging.info(f'{name} progress: {batch / num_batches:.0%}')
     loss /= num_batches
     logging.info(f'{name} results: loss = {loss:f}')
     return loss
@@ -197,7 +197,7 @@ def test_cl(
             loss += loss_fn(pred, y).item()
             correct += (pred.argmax(1) == y).type(torch.float).sum().item()
             if verbose and batch in checkpoints:
-                logging.info(f'{name} progress: {batch/num_batches:.0%}')
+                logging.info(f'{name} progress: {batch / num_batches:.0%}')
     loss /= num_batches
     correct /= size
     logging.info(f'{name} results: accuracy = {correct:%}, loss = {loss:f}')
@@ -217,7 +217,7 @@ def get_pred(logits):
 
 def adv_example_plot(examples, name=None, transform=None, labels=None):
     n = len(examples)
-    fig, axs = plt.subplots(n, 3, squeeze=False, figsize=(9, n*3))
+    fig, axs = plt.subplots(n, 3, squeeze=False, figsize=(9, n * 3))
     for i in range(n):
         x, perturbed, logits_o, logits_a = examples[i]
         if transform:
@@ -245,7 +245,7 @@ def adv_example_plot(examples, name=None, transform=None, labels=None):
         ax[2].axis('off')
     plt.tight_layout()
     if name:
-        plt.savefig(name+'.pdf')
+        plt.savefig(name + '.pdf')
     else:
         plt.show()
 
@@ -261,8 +261,8 @@ def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transfo
     for i in range(n):
         x, y = X[i], Y[i]
         ax = axs[i]
-        d_2 = torch.norm(x-y)
-        d_s = torch.norm(x-y, float('inf'))
+        d_2 = torch.norm(x - y)
+        d_s = torch.norm(x - y, float('inf'))
         ax[0].imshow(x.squeeze(), cmap='gray', vmin=0., vmax=1.)
         ax[0].set_title(f'original\nl_2 distance = {d_2:.5f}')
         ax[0].axis('off')
@@ -292,12 +292,13 @@ class MarginLoss(nn.Module):
 def pgd_attack(
         x: torch.Tensor,
         model,
-        epsilon,
-        step_size,
-        loss_fn=nn.CrossEntropyLoss(),
-        target=None,
+        epsilon: float,
+        step_size: float,
+        loss_fn=MarginLoss(),
+        target: int = None,
         manifold_projection=None,
-        max_iter=50,
+        max_iter: int = 50,
+        early_stopping: bool = True,
 ):
     x_ = x.clone().detach()
     device = x_.device
@@ -316,8 +317,8 @@ def pgd_attack(
         maxs = torch.tensor([2.2489083, 2.42857143, 2.64]).resize_(3, 1, 1).to(device)
         maxs = torch.ones_like(x_) * maxs
     else:
-        mins = 1.
-        maxs = 1.
+        mins = -1.
+        maxs = +1.
 
     targeted = bool(target)
     model.eval()
@@ -330,11 +331,12 @@ def pgd_attack(
     for i in range(max_iter):
         x_.requires_grad_(True)
         pred = model(x_)
-        if targeted ^ (pred.argmax(1).item() != target.item()):
+        if early_stopping and (targeted ^ (pred.argmax(1).item() != target.item())):
             logging.info(f'pgd attack successful after {i} iterations')
             return x_.clone().detach()
         loss = loss_fn(pred, target)
         model.zero_grad()
+        assert x_.grad is None
         loss.backward()
         grad = x_.grad.data
         with torch.no_grad():
@@ -359,7 +361,8 @@ def adv_attack_standard(
         device,
         max_n=10,
         max_iter=50,
-        loss_fct=nn.CrossEntropyLoss()
+        loss_fct=MarginLoss(),
+        target: int = None,
 ):
     assert epsilon > 0
     model.eval()
@@ -370,11 +373,99 @@ def adv_attack_standard(
             pred_o = model(x)
             if pred_o.argmax(1).item() != y.item():
                 continue
-        perturbed = pgd_attack(x, model, epsilon, step_size, max_iter=max_iter, loss_fn=loss_fct)
+        perturbed = pgd_attack(x, model, epsilon, step_size, max_iter=max_iter, loss_fn=loss_fct, target=target)
         with torch.no_grad():
             pred_a = model(perturbed)
             if pred_a.argmax(1).item() != y.item():
                 examples.append((x.cpu().detach(), perturbed.cpu().detach(), pred_o.cpu(), pred_a.cpu()))
+                logging.info('adversarial example found')
+                if len(examples) == max_n:
+                    break
+    return examples
+
+
+def adv_attack_manifold(
+        model,
+        autoencoder,
+        dataloader,
+        epsilon: tuple,
+        step_size: tuple,
+        device,
+        max_n=10,
+        max_iter: tuple = (50, 1000, 1000),
+        loss_fct=MarginLoss(),
+        target: int = None,
+):
+    assert epsilon > 0
+    model.eval()
+    examples = []
+    for x, y in dataloader:
+        x, y = x.to(device), y.to(device)
+        with torch.no_grad():
+            pred_o = model(x)
+            if pred_o.argmax(1).item() != y.item():
+                continue
+        # TODO define on/off manifold projections
+
+        def on_manifold():
+            def projection(grad):
+                pass
+            return projection
+
+        def off_manifold():
+            def projection(grad):
+                pass
+            return projection
+
+        perturbed = pgd_attack(
+            x,
+            model,
+            epsilon[0],
+            step_size[0],
+            max_iter=max_iter[0],
+            loss_fn=loss_fct,
+            target=target,
+        )
+        perturbed_on = pgd_attack(
+            x,
+            model,
+            epsilon[1],
+            step_size[1],
+            max_iter=max_iter[1],
+            loss_fn=loss_fct,
+            manifold_projection=on_manifold(),
+            target=target,
+
+        )
+        perturbed_off = pgd_attack(
+            x,
+            model,
+            epsilon[2],
+            step_size[2],
+            max_iter=max_iter[2],
+            loss_fn=loss_fct,
+            manifold_projection=off_manifold(),
+            target=target,
+
+        )
+        with torch.no_grad():
+            pred_a = model(perturbed)
+            pred_a_on = model(perturbed_on)
+            pred_a_off = model(perturbed_off)
+
+            if pred_a.argmax(1).item() != y.item() and \
+                    pred_a_on.argmax(1).item() != y.item() and \
+                    pred_a_off.argmax(1).item() != y.item():
+                examples.append((
+                    x.cpu().detach(),
+                    perturbed.cpu().detach(),
+                    perturbed_on.cpu().detach(),
+                    perturbed_off.cpu().detach(),
+                    pred_o.cpu(),
+                    pred_a.cpu(),
+                    pred_a_on.cpu(),
+                    pred_a_off.cpu(),
+                ))
                 logging.info('adversarial example found')
                 if len(examples) == max_n:
                     break
