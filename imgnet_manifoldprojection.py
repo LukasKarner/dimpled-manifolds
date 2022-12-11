@@ -66,12 +66,10 @@ for i in trange(n_pixels):
     torch.flatten(Z)[i].backward(retain_graph=(i < n_pixels - 1))
     G[i] = torch.flatten(Y.grad)
 
-H = G.T.resize(n_latents, 3, 224, 224)
-assert torch.all(torch.flatten(Y.grad)[:n_latents] == H[:, 2, 223, 223]).item()
 logging.info('beginning qr decomposition')
 with torch.no_grad():
     R = in_place_qr(G)
-    H = G.T.resize(n_latents, 3, 224, 224)
+    G = G.T.resize(n_latents, 3, 224, 224)
     print(torch.histogram(R, bins=20))
 logging.info('qr decomposition complete')
 
@@ -95,10 +93,8 @@ for i in trange(n_pixels):
     G[i] = torch.flatten(Y.grad)
 
 logging.info('beginning qr decomposition')
-H = G.T.resize(n_latents, 3, 224, 224)
-assert torch.all(torch.flatten(Y.grad)[:n_latents] == H[:, 2, 223, 223]).item()
 with torch.no_grad():
     R = in_place_qr(G)
-    H = G.T.resize(n_latents, 3, 224, 224)
+    G = G.T.resize(n_latents, 3, 224, 224)
     print(torch.histogram(R, bins=20))
 logging.info('qr decomposition finished')
