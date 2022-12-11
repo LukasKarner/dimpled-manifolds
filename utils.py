@@ -282,8 +282,9 @@ def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transfo
 
 
 def in_place_qr(A):
-    C = torch.zeros(len(A.T))
-    D = torch.empty(len(A.T))
+    device = A.device
+    C = torch.zeros(len(A.T), device=device)
+    D = torch.empty(len(A.T), device=device)
     for i in range(len(A.T)):
         D[i] = torch.linalg.norm(A.T[i])
         A.T[i] /= D[i]
