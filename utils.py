@@ -6,6 +6,7 @@ import logging
 import sys
 import platform
 import os
+from tqdm import trange
 
 
 #####################
@@ -285,7 +286,7 @@ def in_place_qr(A):
     device = A.device
     C = torch.zeros(len(A.T), device=device)
     D = torch.empty(len(A.T), device=device)
-    for i in range(len(A.T)):
+    for i in trange(len(A.T)):
         D[i] = torch.linalg.norm(A.T[i])
         A.T[i] /= D[i]
         x, y = A.T[i+1:].size()
