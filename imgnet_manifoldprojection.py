@@ -70,8 +70,8 @@ H = G.T.resize(n_latents, 3, 224, 224)
 assert torch.all(torch.flatten(Y.grad)[:n_latents] == H[:, 2, 223, 223]).item()
 logging.info('beginning qr decomposition')
 with torch.no_grad():
-    Q, R = torch.linalg.qr(G)
-    H = Q.T.resize(n_latents, 3, 224, 224)
+    R = in_place_qr(G)
+    H = G.T.resize(n_latents, 3, 224, 224)
 logging.info('qr decomposition complete')
 
 
@@ -97,6 +97,6 @@ logging.info('beginning qr decomposition')
 H = G.T.resize(n_latents, 3, 224, 224)
 assert torch.all(torch.flatten(Y.grad)[:n_latents] == H[:, 2, 223, 223]).item()
 with torch.no_grad():
-    Q, R = torch.linalg.qr(G)
-    H = Q.T.resize(n_latents, 3, 224, 224)
+    R = in_place_qr(G)
+    H = G.T.resize(n_latents, 3, 224, 224)
 logging.info('qr decomposition finished')

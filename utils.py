@@ -281,6 +281,20 @@ def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transfo
 ###########################################
 
 
+def in_place_qr(A):
+    C = torch.zeros(len(A.T))
+    D = torch.empty(len(A.T))
+    for i in range(len(A.T)):
+        D[i] = torch.linalg.norm(A.T[i])
+        A.T[i] /= D[i]
+        x, y = A.T[i+1:].size()
+        v = A.T[i].clone()
+        w = v @ A.T[i+1:].T
+        C[i+1:] += w ** 2
+        A.T[i+1:] -= w.resize_(x, 1) * v.resize_(1, y)
+    return D ** 2 / (C + D ** 2)
+
+
 class MarginLoss(nn.Module):
     def __init__(self):
         super().__init__()
