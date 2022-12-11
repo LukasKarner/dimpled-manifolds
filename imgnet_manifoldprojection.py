@@ -70,7 +70,7 @@ logging.info('beginning qr decomposition')
 with torch.no_grad():
     R = in_place_qr(G)
     G = G.T.resize(n_latents, 3, 224, 224)
-    print(torch.histogram(R, bins=20))
+    print(torch.histogram(R.to('cpu'), bins=20))
 logging.info('qr decomposition complete')
 
 
@@ -96,5 +96,5 @@ logging.info('beginning qr decomposition')
 with torch.no_grad():
     R = in_place_qr(G)
     G = G.T.resize(n_latents, 3, 224, 224)
-    print(torch.histogram(R, bins=20))
+    print(torch.histogram(R.to('cpu'), bins=20))
 logging.info('qr decomposition finished')
