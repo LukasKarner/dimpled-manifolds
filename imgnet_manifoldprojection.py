@@ -43,7 +43,7 @@ device = get_device()
 
 # preparing model
 model = VGG16().to(device)
-model.load_state_dict(torch.load('temp/ImgNetAEC.pth', map_location=device), strict=True)
+model.load_state_dict(torch.load('finals/ImgNetAEC.pth', map_location=device), strict=True)
 model.eval()
 
 logging.info('model ready')

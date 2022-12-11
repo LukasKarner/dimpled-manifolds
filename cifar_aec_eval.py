@@ -43,7 +43,7 @@ device = torch.device('cpu')
 
 # preparing model
 model = CifarAEC().to(device)
-model.load_state_dict(torch.load('temp/CifarAEC.pth', map_location=device), strict=True)
+model.load_state_dict(torch.load('finals/CifarAEC.pth', map_location=device), strict=True)
 model.eval()
 
 logging.info('model ready')
