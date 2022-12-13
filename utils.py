@@ -65,6 +65,10 @@ def inv_scaling(n_channels: int = 3):
     return Normalize([-1] * n_channels, [2] * n_channels)
 
 
+def imgnet_scaling():
+    return Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
+
+
 def inv_imgnet_scaling():
     return Normalize((-0.485 / 0.229, -0.456 / 0.224, -0.406 / 0.225), (1 / 0.229, 1 / 0.224, 1 / 0.225))
 
@@ -450,6 +454,7 @@ def adv_attack_manifold(
             pred_a = model(perturbed)
             if pred_a.argmax(1).item() == y.item():
                 continue
+
         logging.info('computing projection')
         e.requires_grad_(True)
         d_ = autoencoder.decoder(e)

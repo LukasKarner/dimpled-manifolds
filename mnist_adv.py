@@ -12,12 +12,30 @@ loss_fn = MarginLoss()
 logging.info('loading data')
 
 # loading data
-training_data = datasets.MNIST(root='data.nosync', download=True, train=True, transform=eval_transform(1))
-test_data = datasets.MNIST(root='data.nosync', download=True, train=False, transform=eval_transform(1))
+training_data = datasets.MNIST(
+    root='data.nosync',
+    download=True,
+    train=True,
+    transform=eval_transform(1),
+)
+test_data = datasets.MNIST(
+    root='data.nosync',
+    download=True,
+    train=False,
+    transform=eval_transform(1),
+)
 
 # create dataloaders
-train_dataloader = DataLoader(training_data, batch_size, True)
-test_dataloader = DataLoader(test_data, batch_size, True)
+train_dataloader = DataLoader(
+    training_data,
+    batch_size,
+    True,
+)
+test_dataloader = DataLoader(
+    test_data,
+    batch_size,
+    True,
+)
 
 logging.info('loading data complete')
 logging.info('preparing model')
@@ -53,7 +71,7 @@ examples = adv_attack_manifold(
     step_size=(0.02, 0.2, 0.02),
     device=device,
 )
-adv_example_plot_projection(examples, 'plots/temp/mnist_adv_train_', transform=inv_scaling(1))
+adv_example_plot_projection(examples, 'plots/temp/mnist/mnist_adv_train_', transform=inv_scaling(1))
 
 
 examples = adv_attack_manifold(
@@ -66,6 +84,6 @@ examples = adv_attack_manifold(
     step_size=(0.02, 0.2, 0.02),
     device=device,
 )
-adv_example_plot_projection(examples, 'plots/temp/mnist_adv_test_', transform=inv_scaling(1))
+adv_example_plot_projection(examples, 'plots/temp/mnist/mnist_adv_test_', transform=inv_scaling(1))
 
 logging.info('trials complete')
