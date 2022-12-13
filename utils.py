@@ -6,7 +6,6 @@ import logging
 import sys
 import platform
 import os
-from tqdm import trange
 
 
 #####################
@@ -56,6 +55,10 @@ def eval_transform(n_channels: int = 3):
     return Compose([ToTensor(),
                     Normalize([0.5] * n_channels, [0.5] * n_channels)]
                    )
+
+
+def eval_transform_tensor(n_channels: int = 3):
+    return Normalize([0.5] * n_channels, [0.5] * n_channels)
 
 
 def inv_scaling(n_channels: int = 3):
@@ -251,6 +254,13 @@ def adv_example_plot(examples, name=None, transform=None, labels=None):
         plt.show()
 
 
+def adv_example_plot_projection(examples, name=None, transform=None, labels=None):
+    for i in range(len(examples)):
+        c = examples[i]
+        one_example = [(c[0], c[j], c[4], c[4+j]) for j in range(1, 4)]
+        adv_example_plot(one_example, name=name+str(i), transform=transform, labels=labels)
+
+
 def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transform=None):
     n = len(X)
     assert n == len(Y)
@@ -282,11 +292,11 @@ def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transfo
 ###########################################
 
 
-def in_place_qr(A):
+def in_place_qr(A: torch.Tensor):
     device = A.device
     C = torch.zeros(len(A.T), device=device)
     D = torch.empty(len(A.T), device=device)
-    for i in trange(len(A.T)):
+    for i in range(len(A.T)):
         D[i] = torch.linalg.norm(A.T[i])
         A.T[i] /= D[i]
         x, y = A.T[i+1:].size()
@@ -394,7 +404,7 @@ def adv_attack_standard(
             pred_a = model(perturbed)
             if pred_a.argmax(1).item() != y.item():
                 examples.append((x.cpu().detach(), perturbed.cpu().detach(), pred_o.cpu(), pred_a.cpu()))
-                logging.info('adversarial example found')
+                logging.info(f'adversarial example {len(examples)} found')
                 if len(examples) == max_n:
                     break
     return examples
@@ -403,6 +413,8 @@ def adv_attack_standard(
 def adv_attack_manifold(
         model,
         autoencoder,
+        transform,
+        inv_transform,
         dataloader,
         epsilon: tuple,
         step_size: tuple,
@@ -412,26 +424,18 @@ def adv_attack_manifold(
         loss_fct=MarginLoss(),
         target: int = None,
 ):
-    assert epsilon > 0
     model.eval()
+    autoencoder.eval()
     examples = []
     for x, y in dataloader:
         x, y = x.to(device), y.to(device)
+        s = x.size()
+        assert s[0] == 1
         with torch.no_grad():
             pred_o = model(x)
+            e = autoencoder.encoder(inv_transform(x))
             if pred_o.argmax(1).item() != y.item():
                 continue
-        # TODO define on/off manifold projections
-
-        def on_manifold():
-            def projection(grad):
-                pass
-            return projection
-
-        def off_manifold():
-            def projection(grad):
-                pass
-            return projection
 
         perturbed = pgd_attack(
             x,
@@ -442,6 +446,37 @@ def adv_attack_manifold(
             loss_fn=loss_fct,
             target=target,
         )
+        with torch.no_grad():
+            pred_a = model(perturbed)
+            if pred_a.argmax(1).item() == y.item():
+                continue
+        logging.info('computing projection')
+        e.requires_grad_(True)
+        d_ = autoencoder.decoder(e)
+        d = transform(d_)
+        n_pixels = d.numel()
+        n_latents = e.numel()
+        g = torch.empty(n_pixels, n_latents, device=device)
+        for i in range(n_pixels):
+            autoencoder.zero_grad()
+            transform.zero_grad()
+            if i > 0:
+                e.grad *= 0.
+            torch.flatten(d)[i].backward(retain_graph=(i < n_pixels - 1))
+            g[i] = torch.flatten(e.grad)
+        with torch.no_grad():
+            in_place_qr(g)
+
+        def projection_on(grad):
+            grad = torch.flatten(grad)
+            grad = g.T @ grad
+            grad = g @ grad
+            grad.resize_(s)
+            return grad
+
+        def projection_off(grad):
+            return grad - projection_on(grad)
+
         perturbed_on = pgd_attack(
             x,
             model,
@@ -449,10 +484,15 @@ def adv_attack_manifold(
             step_size[1],
             max_iter=max_iter[1],
             loss_fn=loss_fct,
-            manifold_projection=on_manifold(),
+            manifold_projection=projection_on,
             target=target,
 
         )
+        with torch.no_grad():
+            pred_a_on = model(perturbed_on)
+            if pred_a_on.argmax(1).item() == y.item():
+                continue
+
         perturbed_off = pgd_attack(
             x,
             model,
@@ -460,29 +500,26 @@ def adv_attack_manifold(
             step_size[2],
             max_iter=max_iter[2],
             loss_fn=loss_fct,
-            manifold_projection=off_manifold(),
+            manifold_projection=projection_off,
             target=target,
 
         )
         with torch.no_grad():
-            pred_a = model(perturbed)
-            pred_a_on = model(perturbed_on)
             pred_a_off = model(perturbed_off)
+            if pred_a_off.argmax(1).item() == y.item():
+                continue
 
-            if pred_a.argmax(1).item() != y.item() and \
-                    pred_a_on.argmax(1).item() != y.item() and \
-                    pred_a_off.argmax(1).item() != y.item():
-                examples.append((
-                    x.cpu().detach(),
-                    perturbed.cpu().detach(),
-                    perturbed_on.cpu().detach(),
-                    perturbed_off.cpu().detach(),
-                    pred_o.cpu(),
-                    pred_a.cpu(),
-                    pred_a_on.cpu(),
-                    pred_a_off.cpu(),
-                ))
-                logging.info('adversarial example found')
-                if len(examples) == max_n:
-                    break
+        examples.append((
+            x.cpu().detach(),
+            perturbed.cpu().detach(),
+            perturbed_on.cpu().detach(),
+            perturbed_off.cpu().detach(),
+            pred_o.cpu(),
+            pred_a.cpu(),
+            pred_a_on.cpu(),
+            pred_a_off.cpu(),
+        ))
+        logging.info(f'adversarial example {len(examples)} found')
+        if len(examples) == max_n:
+            break
     return examples
