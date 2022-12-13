@@ -19,6 +19,7 @@ training_data = datasets.ImageNet(
     split='train',
     transform=models.ResNet50_Weights.DEFAULT.transforms(),
 )
+train_labels = [i[0] for i in training_data.classes]
 training_classes = torch.tensor(training_data.targets)
 training_ind = (training_classes == 1) | (training_classes == 2)
 training_data = Subset(training_data, torch.nonzero(training_ind))
@@ -28,6 +29,7 @@ test_data = datasets.ImageNet(
     split='val',
     transform=models.ResNet50_Weights.DEFAULT.transforms(),
 )
+test_labels = [i[0] for i in test_data.classes]
 test_classes = torch.tensor(test_data.targets)
 test_ind = (test_classes == 1) | (test_classes == 2)
 test_data = Subset(test_data, torch.nonzero(test_ind))
@@ -73,7 +75,7 @@ adv_example_plot_projection(
     examples,
     'plots/temp/imgnet/imgnet_adv_train_',
     transform=inv_imgnet_scaling(),
-    labels=[i[0] for i in training_data.classes],
+    labels=train_labels,
 )
 
 
@@ -91,7 +93,7 @@ adv_example_plot_projection(
     examples,
     'plots/temp/imgnet/imgnet_adv_test_',
     transform=inv_imgnet_scaling(),
-    labels=[i[0] for i in test_data.classes],
+    labels=test_labels,
 )
 
 logging.info('trials complete')

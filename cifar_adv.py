@@ -18,6 +18,7 @@ training_data = datasets.CIFAR10(
     train=True,
     transform=eval_transform(),
 )
+train_labels = training_data.classes
 training_classes = torch.tensor(training_data.targets)
 training_ind = (training_classes == 0) | (training_classes == 1)
 training_data = Subset(training_data, torch.nonzero(training_ind))
@@ -28,6 +29,7 @@ test_data = datasets.CIFAR10(
     train=False,
     transform=eval_transform(),
 )
+test_labels = test_data.classes
 test_classes = torch.tensor(test_data.targets)
 test_ind = (test_classes == 0) | (test_classes == 1)
 test_data = Subset(test_data, torch.nonzero(test_ind))
@@ -74,7 +76,7 @@ adv_example_plot_projection(
     examples,
     'plots/temp/cifar_adv_train_',
     transform=inv_scaling(),
-    labels=training_data.classes
+    labels=train_labels,
 )
 
 
@@ -92,7 +94,7 @@ adv_example_plot_projection(
     examples,
     'plots/temp/cifar_adv_test_',
     transform=inv_scaling(),
-    labels=test_data.classes,
+    labels=test_labels,
 )
 
 logging.info('trials complete')
