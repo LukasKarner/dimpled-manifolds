@@ -21,7 +21,7 @@ training_data = datasets.ImageNet(
 )
 train_labels = [i[0] for i in training_data.classes]
 training_classes = torch.tensor(training_data.targets)
-training_ind = (training_classes == 1) | (training_classes == 2)
+training_ind = (training_classes == 1)  # | (training_classes == 2)
 training_data = Subset(training_data, torch.nonzero(training_ind))
 
 test_data = datasets.ImageNet(
@@ -70,6 +70,8 @@ examples = adv_attack_manifold(
     epsilon=(2., 5., 5.),
     step_size=(0.01, 0.1, 0.01),
     device=device,
+    max_n=1,
+    target=2,
 )
 adv_example_plot_projection(
     examples,
@@ -88,6 +90,8 @@ examples = adv_attack_manifold(
     epsilon=(2., 5., 5.),
     step_size=(0.01, 0.1, 0.01),
     device=device,
+    max_n=1,
+    target=2,
 )
 adv_example_plot_projection(
     examples,

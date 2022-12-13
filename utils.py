@@ -355,6 +355,8 @@ def pgd_attack(
     with torch.no_grad():
         if not targeted:
             target = model(x).argmax(1)
+        else:
+            target = torch.tensor([target], device=device, dtype=torch.int)
     assert step_size > 0
     step_size = step_size if targeted else -1 * step_size
 

@@ -74,7 +74,7 @@ examples = adv_attack_manifold(
 )
 adv_example_plot_projection(
     examples,
-    'plots/temp/cifar_adv_train_',
+    'plots/temp/cifar/cifar_adv_train_',
     transform=inv_scaling(),
     labels=train_labels,
 )
@@ -92,7 +92,7 @@ examples = adv_attack_manifold(
 )
 adv_example_plot_projection(
     examples,
-    'plots/temp/cifar_adv_test_',
+    'plots/temp/cifar/cifar_adv_test_',
     transform=inv_scaling(),
     labels=test_labels,
 )
