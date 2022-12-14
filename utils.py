@@ -316,7 +316,23 @@ class MarginLoss(nn.Module):
         super().__init__()
 
     def forward(self, x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
-        return torch.mean(x - x[0, y.item()])  # TODO multi dim
+        return torch.mean(x - x[0, y.item()])
+
+
+# DON'T USE, CERATES BUGS BREAKING RUNNING ENVIRONMENTS
+'''
+class MarginMseLoss(nn.Module):
+    def __init__(self, c: float = 100.):
+        super().__init__()
+        self.margin = MarginLoss()
+        self.mse = nn.MSELoss()
+        self.c = c
+
+    def forward(self, x: torch.Tensor, label: torch.Tensor, y: torch.Tensor):
+        a = self.margin(x, label)
+        b = self.c * self.mse(x, y)
+        return a + b
+'''
 
 
 def pgd_attack(
@@ -329,6 +345,7 @@ def pgd_attack(
         manifold_projection=None,
         max_iter: int = 50,
         early_stopping: bool = True,
+        measurement: bool = False,
 ):
     x_ = x.clone().detach()
     device = x_.device
@@ -366,7 +383,10 @@ def pgd_attack(
         if early_stopping and (targeted ^ (pred.argmax(1).item() != target.item())):
             logging.info(f'pgd attack successful after {i} iterations')
             return x_.clone().detach()
-        loss = loss_fn(pred, target)
+        if measurement:
+            loss = loss_fn(pred, target, x)
+        else:
+            loss = loss_fn(pred, target)
         model.zero_grad()
         assert x_.grad is None
         loss.backward()
@@ -395,6 +415,7 @@ def adv_attack_standard(
         max_iter=50,
         loss_fct=MarginLoss(),
         target: int = None,
+        measurement: bool = False,
 ):
     assert epsilon > 0
     model.eval()
@@ -405,7 +426,7 @@ def adv_attack_standard(
             pred_o = model(x)
             if pred_o.argmax(1).item() != y.item():
                 continue
-        perturbed = pgd_attack(x, model, epsilon, step_size, max_iter=max_iter, loss_fn=loss_fct, target=target)
+        perturbed = pgd_attack(x, model, epsilon, step_size, max_iter=max_iter, loss_fn=loss_fct, target=target, measurement=measurement)
         with torch.no_grad():
             pred_a = model(perturbed)
             if pred_a.argmax(1).item() != y.item():
