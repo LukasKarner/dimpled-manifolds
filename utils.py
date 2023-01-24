@@ -348,27 +348,28 @@ class IsoLoss(nn.Module):
 class PIsoLoss(nn.Module):
     def __init__(self,
                  lam: float,
+                 device,
                  in_dims: int = 4,  # size (batch, channels, height, width)
                  lat_dims: int = 2,  # size (batch, latent_features)
                  ):
         super().__init__()
-        self.lam = torch.tensor(lam)
-        self.mse = nn.MSELoss()
+        self.lam = torch.tensor(lam).to(device)
+        self.mse = nn.MSELoss().to(device)
         self.in_ = in_dims
         self.lat = lat_dims
+        self.device = device
 
     def forward(self, jacobian: torch.Tensor):
-        device = jacobian.device
         assert jacobian.dim() == 1 + self.in_ + self.lat
         # flatten jacobian to (batch_size, latent_size, input_size)
         d = torch.flatten(torch.flatten(jacobian, start_dim=-self.out), start_dim=1, end_dim=self.in_)
         assert d.dim() == 3
         s = d.size()
-        uT = torch.randn(s[0], 1, s[1]).to(device)
+        uT = torch.randn(s[0], 1, s[1]).to(self.device)
         uT = uT / torch.linalg.vector_norm(uT, dim=2, keepdim=True)
         uTd = torch.matmul(uT, d)
         assert uTd.dim() == 3
-        l = self.lam * self.mse(uTd, torch.ones_like(uTd))
+        l = self.lam * self.mse(uTd, torch.ones_like(uTd, device=self.device))
         return l
 
 
