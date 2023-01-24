@@ -21,7 +21,7 @@ lr = 0.001
 lam = 1.
 epochs = 10
 
-device = torch.device('cpu')
+device = get_device()
 
 
 # In[3]:
