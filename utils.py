@@ -178,7 +178,7 @@ def train_iso_ae(
 
         if verbose and batch in checkpoints:
             loss, i_loss, p_loss, pct = loss.item(), l_iso.item(), l_piso.item(), batch / size
-            logging.info(f'{pct:4.0%} | mse = {loss:.5f} | iso = {i_loss:.5f} | piso = {p_loss:.5f}')
+            logging.info(f'{pct:4.0%} | mse = {loss:f} | iso = {i_loss:f} | piso = {p_loss:f}')
 
 
 def test_ae(
@@ -251,7 +251,7 @@ def test_iso_ae(
     loss /= num_batches
     l_iso /= num_batches
     l_piso /= num_batches
-    logging.info(f'{name} results: mse = {loss:.5f} | iso = {l_iso:.5f} | piso = {l_piso:.5f}')
+    logging.info(f'{name} results: mse = {loss:f} | iso = {l_iso:f} | piso = {l_piso:f}')
     return loss, l_iso, l_piso
 
 

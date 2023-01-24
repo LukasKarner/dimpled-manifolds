@@ -8,7 +8,7 @@ set_up_log('mnist_iso_aec')
 # set parameters
 batch_size = 16
 loss_fn = nn.MSELoss()
-lam = 1.,
+lam = 10.,
 lr = 0.001
 epochs = 10
 
