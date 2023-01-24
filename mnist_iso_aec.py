@@ -8,8 +8,8 @@ set_up_log('mnist_iso_aec')
 # set parameters
 batch_size = 16
 loss_fn = nn.MSELoss()
-lam = 10.,
-lr = 0.001
+lam = 100.  # 1
+lr = 0.01  # 0.001
 epochs = 10
 
 logging.info('loading data')
@@ -46,11 +46,12 @@ logging.info('model ready')
 logging.info('optimising model')
 
 # optimising model
+test_iso_ae(train_dataloader, model, loss_fn, lam, device, name='train', verbose=10)  # TODO remove
 for i in range(epochs):
     logging.info(f'epoch {i + 1}')
     train_iso_ae(train_dataloader, model, loss_fn, lam, optimizer, device)
-    if (i + 1) % 10 == 0:
-        test_iso_ae(test_dataloader, model, loss_fn, lam, device)
+    if (i + 1) % 1 == 0:
+        test_iso_ae(train_dataloader, model, loss_fn, lam, device, name='train', verbose=10)  # TODO remove
 
 logging.info('optimisation complete')
 logging.info('saving model')
