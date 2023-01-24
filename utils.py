@@ -324,7 +324,7 @@ class IsoLoss(nn.Module):
                  out_dims: int = 4,  # size (batch, channels, height, width)
                  ):
         super().__init__()
-        self.lam = lam
+        self.lam = torch.tensor(lam)
         self.mse = nn.MSELoss()
         self.lat = lat_dims
         self.out = out_dims
@@ -340,6 +340,7 @@ class IsoLoss(nn.Module):
         u = u / torch.linalg.vector_norm(u, dim=1, keepdim=True)
         du = torch.matmul(d, u)
         assert du.dim() == 3
+        self.lam.to(device)
         l = self.lam * self.mse(du, torch.ones_like(du))
         return l
 
