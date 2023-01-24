@@ -362,7 +362,7 @@ class PIsoLoss(nn.Module):
     def forward(self, jacobian: torch.Tensor):
         assert jacobian.dim() == 1 + self.in_ + self.lat
         # flatten jacobian to (batch_size, latent_size, input_size)
-        d = torch.flatten(torch.flatten(jacobian, start_dim=-self.out), start_dim=1, end_dim=self.in_)
+        d = torch.flatten(torch.flatten(jacobian, start_dim=-self.in_), start_dim=1, end_dim=self.lat)
         assert d.dim() == 3
         s = d.size()
         uT = torch.randn(s[0], 1, s[1]).to(self.device)
