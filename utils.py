@@ -341,7 +341,7 @@ class IsoLoss(nn.Module):
         du = torch.matmul(d, u)
         assert du.dim() == 3
         self.lam.to(device)
-        l = self.lam * self.mse(du, torch.ones_like(du))
+        l = self.lam * self.mse(du, torch.ones_like(du, device=device))
         return l
 
 
