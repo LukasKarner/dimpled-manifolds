@@ -1,6 +1,7 @@
 import torch
 from torch import nn
 from torchvision.transforms import ToTensor, Pad, RandomCrop, RandomHorizontalFlip, Normalize, Compose
+import functorch as ft
 import matplotlib.pyplot as plt
 import logging
 import sys
@@ -107,7 +108,7 @@ def train_ae(
         loss_fn,
         optimizer,
         device,
-        verbose: int = 6
+        verbose: int = 6,
 ):
     size = len(dataloader)
     if verbose:
@@ -128,6 +129,56 @@ def train_ae(
         if verbose and batch in checkpoints:
             loss, pct = loss.item(), batch / size
             logging.info(f'{pct:4.0%} | loss = {loss:f}')
+
+
+def train_iso_ae(
+        dataloader,
+        model,
+        loss_fn,
+        lam,
+        optimizer,
+        device,
+        verbose: int = 6,
+):
+    size = len(dataloader)
+    iso_loss = IsoLoss(lam).to(device)
+    piso_loss = PIsoLoss(lam).to(device)
+    if verbose:
+        checkpoints = torch.linspace(0, size - 1, verbose, dtype=int)
+    for batch, (X, y) in enumerate(dataloader):
+        X, y = X.to(device), y.to(device)
+
+        # forward
+        model.train()
+        lat = model.encoder(X)
+        pred = model.decoder(lat)
+        loss = loss_fn(pred, X)
+
+        # backward
+        optimizer.zero_grad()
+        loss.backward(retain_graph=True)
+
+        # prepare tensors for jacobian computation
+        X = torch.unsqueeze(X, 1)
+        lat = torch.unsqueeze(lat, 1)
+
+        model.eval()  # necessary to make batchnorm work with jacobian computation
+        encoder_jac = ft.vmap(ft.jacrev(model.encoder))(X)
+        decoder_jac = ft.vmap(ft.jacfwd(model.decoder))(lat)
+
+        # forward again
+        l_iso = iso_loss(decoder_jac)
+        l_piso = piso_loss(encoder_jac)
+
+        # backward again
+        l_iso.backward(retain_graph=True)
+        l_piso.backward()
+
+        optimizer.step()
+
+        if verbose and batch in checkpoints:
+            loss, i_loss, p_loss, pct = loss.item(), l_iso.item(), l_piso.item(), batch / size
+            logging.info(f'{pct:4.0%} | mse = {loss:.5f} | iso = {i_loss:.5f} | piso = {p_loss:.5f}')
 
 
 def test_ae(
@@ -153,6 +204,55 @@ def test_ae(
     loss /= num_batches
     logging.info(f'{name} results: loss = {loss:f}')
     return loss
+
+
+def test_iso_ae(
+        dataloader,
+        model,
+        loss_fn,
+        lam,
+        device,
+        name='test',
+        verbose: int = None,
+):
+    num_batches = len(dataloader)
+    iso_loss = IsoLoss(lam).to(device)
+    piso_loss = PIsoLoss(lam).to(device)
+    if verbose:
+        checkpoints = torch.linspace(0, num_batches - 1, verbose, dtype=int)
+    model.eval()
+    loss = 0
+    l_iso = 0
+    l_piso = 0
+
+    for batch, (X, y) in enumerate(dataloader):
+        X, y = X.to(device), y.to(device)
+
+        # forward
+        with torch.no_grad():
+            lat = model.encoder(X)
+            pred = model.decoder(lat)
+            loss += loss_fn(pred, X).item()
+
+        # prepare tensors for jacobian computation
+        X = torch.unsqueeze(X, 1)
+        lat = torch.unsqueeze(lat, 1)
+
+        # backward
+        encoder_jac = ft.vmap(ft.jacrev(model.encoder))(X)
+        decoder_jac = ft.vmap(ft.jacfwd(model.decoder))(lat)
+
+        # forward again
+        l_iso += iso_loss(decoder_jac).item()
+        l_piso += piso_loss(encoder_jac).item()
+
+        if verbose and batch in checkpoints:
+            logging.info(f'{name} progress: {batch / num_batches:.0%}')
+    loss /= num_batches
+    l_iso /= num_batches
+    l_piso /= num_batches
+    logging.info(f'{name} results: mse = {loss:.5f} | iso = {l_iso:.5f} | piso = {l_piso:.5f}')
+    return loss, l_iso, l_piso
 
 
 def train_cl(
@@ -210,6 +310,65 @@ def test_cl(
     correct /= size
     logging.info(f'{name} results: accuracy = {correct:%}, loss = {loss:f}')
     return correct, loss
+
+
+################################
+# isometric autoencoder losses #
+################################
+
+
+class IsoLoss(nn.Module):
+    def __init__(self,
+                 lam: float,
+                 lat_dims: int = 2,  # size (batch, latent_features)
+                 out_dims: int = 4,  # size (batch, channels, height, width)
+                 ):
+        super().__init__()
+        self.lam = torch.tensor(lam)
+        self.mse = nn.MSELoss()
+        self.lat = lat_dims
+        self.out = out_dims
+
+    def forward(self, jacobian: torch.Tensor):
+        device = jacobian.device
+        assert jacobian.dim() == 1 + self.lat + self.out
+        # flatten jacobian to (batch_size, output_size, latent_size)
+        d = torch.flatten(torch.flatten(jacobian, start_dim=-self.lat), start_dim=1, end_dim=self.out)
+        assert d.dim() == 3
+        s = d.size()
+        u = torch.randn(s[0], s[2], 1).to(device)
+        u = u / torch.linalg.vector_norm(u, dim=1, keepdim=True)
+        du = torch.matmul(d, u)
+        assert du.dim() == 3
+        l = self.lam * self.mse(du, torch.ones_like(du))
+        return l
+
+
+class PIsoLoss(nn.Module):
+    def __init__(self,
+                 lam: float,
+                 in_dims: int = 4,  # size (batch, channels, height, width)
+                 lat_dims: int = 2,  # size (batch, latent_features)
+                 ):
+        super().__init__()
+        self.lam = torch.tensor(lam)
+        self.mse = nn.MSELoss()
+        self.in_ = in_dims
+        self.lat = lat_dims
+
+    def forward(self, jacobian: torch.Tensor):
+        device = jacobian.device
+        assert jacobian.dim() == 1 + self.in_ + self.lat
+        # flatten jacobian to (batch_size, latent_size, input_size)
+        d = torch.flatten(torch.flatten(jacobian, start_dim=-self.out), start_dim=1, end_dim=self.in_)
+        assert d.dim() == 3
+        s = d.size()
+        uT = torch.randn(s[0], 1, s[1]).to(device)
+        uT = uT / torch.linalg.vector_norm(uT, dim=2, keepdim=True)
+        uTd = torch.matmul(uT, d)
+        assert uTd.dim() == 3
+        l = self.lam * self.mse(uTd, torch.ones_like(uTd))
+        return l
 
 
 ####################################
@@ -297,18 +456,19 @@ def aec_example_plot(X: torch.Tensor, Y: torch.Tensor, name: str = None, transfo
 
 
 def in_place_qr(A: torch.Tensor):
-    device = A.device
-    C = torch.zeros(len(A.T), device=device)
-    D = torch.empty(len(A.T), device=device)
-    for i in range(len(A.T)):
-        D[i] = torch.linalg.norm(A.T[i])
-        A.T[i] /= D[i]
-        x, y = A.T[i+1:].size()
-        v = A.T[i].clone()
-        w = v @ A.T[i+1:].T
-        C[i+1:] += w ** 2
-        A.T[i+1:] -= w.resize_(x, 1) * v.resize_(1, y)
-    return D ** 2 / (C + D ** 2)
+    with torch.no_grad():  # TODO check
+        device = A.device
+        C = torch.zeros(len(A.T), device=device)
+        D = torch.empty(len(A.T), device=device)
+        for i in range(len(A.T)):
+            D[i] = torch.linalg.norm(A.T[i])
+            A.T[i] /= D[i]
+            x, y = A.T[i+1:].size()
+            v = A.T[i].clone()
+            w = v @ A.T[i+1:].T
+            C[i+1:] += w ** 2
+            A.T[i+1:] -= w.resize_(x, 1) * v.resize_(1, y)
+        return D ** 2 / (C + D ** 2)
 
 
 class MarginLoss(nn.Module):
@@ -317,22 +477,6 @@ class MarginLoss(nn.Module):
 
     def forward(self, x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
         return torch.mean(x - x[0, y.item()])
-
-
-# DON'T USE, CERATES BUGS BREAKING RUNNING ENVIRONMENTS
-'''
-class MarginMseLoss(nn.Module):
-    def __init__(self, c: float = 100.):
-        super().__init__()
-        self.margin = MarginLoss()
-        self.mse = nn.MSELoss()
-        self.c = c
-
-    def forward(self, x: torch.Tensor, label: torch.Tensor, y: torch.Tensor):
-        a = self.margin(x, label)
-        b = self.c * self.mse(x, y)
-        return a + b
-'''
 
 
 def pgd_attack(

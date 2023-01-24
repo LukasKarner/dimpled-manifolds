@@ -29,20 +29,20 @@ class MnistMLP(nn.Module):
 
 
 class MnistAEC(nn.Module):
-    def __init__(self):
+    def __init__(self, track_running_stats=True):
         super().__init__()
         self.encoder = nn.Sequential(
             nn.Conv2d(in_channels=1, out_channels=128, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(num_features=128),
+            nn.BatchNorm2d(num_features=128, track_running_stats=track_running_stats),
             nn.Softplus(beta=100),
             nn.Conv2d(in_channels=128, out_channels=256, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(num_features=256),
+            nn.BatchNorm2d(num_features=256, track_running_stats=track_running_stats),
             nn.Softplus(beta=100),
             nn.Conv2d(in_channels=256, out_channels=512, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(num_features=512),
+            nn.BatchNorm2d(num_features=512, track_running_stats=track_running_stats),
             nn.Softplus(beta=100),
             nn.Conv2d(in_channels=512, out_channels=1024, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(num_features=1024),
+            nn.BatchNorm2d(num_features=1024, track_running_stats=track_running_stats),
             nn.Softplus(beta=100),
             nn.Flatten(),
             nn.Linear(1024, 16),
@@ -52,13 +52,13 @@ class MnistAEC(nn.Module):
             nn.Softplus(beta=100),
             nn.Unflatten(1, (1024, 4, 4)),
             nn.ConvTranspose2d(in_channels=1024, out_channels=512, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(num_features=512),
+            nn.BatchNorm2d(num_features=512, track_running_stats=track_running_stats),
             nn.Softplus(beta=100),
             nn.ConvTranspose2d(in_channels=512, out_channels=256, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(num_features=256),
+            nn.BatchNorm2d(num_features=256, track_running_stats=track_running_stats),
             nn.Softplus(beta=100),
             nn.ConvTranspose2d(in_channels=256, out_channels=128, kernel_size=4, stride=2, padding=1),
-            nn.BatchNorm2d(num_features=128),
+            nn.BatchNorm2d(num_features=128, track_running_stats=track_running_stats),
             nn.Softplus(beta=100),
             nn.ConvTranspose2d(in_channels=128, out_channels=1, kernel_size=1, stride=1, padding=2),
         )
