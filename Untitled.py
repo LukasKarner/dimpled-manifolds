@@ -104,12 +104,12 @@ optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
 # In[ ]:
 
-
+test_ae(dataloader, model, loss_fn, lam, device)
 for i in range(epochs):
     logging.info(f'epoch {i + 1}')
     train_iso_ae(dataloader, model, loss_fn, lam, optimizer, device)
     if (i + 1) % 5 == 0:
-        test_ae(test_dataloader, model, loss_fn, lam, device)
+        test_ae(dataloader, model, loss_fn, lam, device)
 
 
 # In[ ]:
