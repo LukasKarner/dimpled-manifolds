@@ -320,28 +320,28 @@ def test_cl(
 class IsoLoss(nn.Module):
     def __init__(self,
                  lam: float,
+                 device,
                  lat_dims: int = 2,  # size (batch, latent_features)
                  out_dims: int = 4,  # size (batch, channels, height, width)
                  ):
         super().__init__()
-        self.lam = torch.tensor(lam)
-        self.mse = nn.MSELoss()
+        self.lam = torch.tensor(lam).to(device)
+        self.mse = nn.MSELoss().to(device)
         self.lat = lat_dims
         self.out = out_dims
+        self.device = device
 
     def forward(self, jacobian: torch.Tensor):
-        device = jacobian.device
         assert jacobian.dim() == 1 + self.lat + self.out
         # flatten jacobian to (batch_size, output_size, latent_size)
         d = torch.flatten(torch.flatten(jacobian, start_dim=-self.lat), start_dim=1, end_dim=self.out)
         assert d.dim() == 3
         s = d.size()
-        u = torch.randn(s[0], s[2], 1).to(device)
+        u = torch.randn(s[0], s[2], 1).to(self.device)
         u = u / torch.linalg.vector_norm(u, dim=1, keepdim=True)
         du = torch.matmul(d, u)
         assert du.dim() == 3
-        self.lam.to(device)
-        l = self.lam * self.mse(du, torch.ones_like(du, device=device))
+        l = self.lam * self.mse(du, torch.ones_like(du, device=self.device))
         return l
 
 
