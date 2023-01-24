@@ -141,8 +141,8 @@ def train_iso_ae(
         verbose: int = 6,
 ):
     size = len(dataloader)
-    iso_loss = IsoLoss(lam).to(device)
-    piso_loss = PIsoLoss(lam).to(device)
+    iso_loss = IsoLoss(lam, device).to(device)
+    piso_loss = PIsoLoss(lam, device).to(device)
     if verbose:
         checkpoints = torch.linspace(0, size - 1, verbose, dtype=int)
     for batch, (X, y) in enumerate(dataloader):
@@ -216,8 +216,8 @@ def test_iso_ae(
         verbose: int = None,
 ):
     num_batches = len(dataloader)
-    iso_loss = IsoLoss(lam).to(device)
-    piso_loss = PIsoLoss(lam).to(device)
+    iso_loss = IsoLoss(lam, device).to(device)
+    piso_loss = PIsoLoss(lam, device).to(device)
     if verbose:
         checkpoints = torch.linspace(0, num_batches - 1, verbose, dtype=int)
     model.eval()
