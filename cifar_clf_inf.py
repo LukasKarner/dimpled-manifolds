@@ -37,7 +37,8 @@ device = get_device()
 
 # preparing model
 model = CifarCNN(n_channel=128).to(device)
-model.load_state_dict(torch.load('CifarCNN.pth', map_location=device), strict=False)
+model.load_state_dict(torch.load('finals/CifarCNN.pth', 
+map_location=device), strict=False)
 
 logging.info('model ready')
 logging.info('running trials')
