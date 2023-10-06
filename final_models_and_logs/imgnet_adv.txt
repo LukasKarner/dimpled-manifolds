@@ -1,0 +1,40 @@
+2022-12-13 18:41:24,976 INFO: loading data
+2022-12-13 18:41:29,683 INFO: loading data complete
+2022-12-13 18:41:29,683 INFO: preparing model
+2022-12-13 18:41:29,698 INFO: using mps device
+2022-12-13 18:41:30,441 INFO: model ready
+2022-12-13 18:41:30,441 INFO: running trials
+2022-12-13 18:43:44,056 INFO: loading data
+2022-12-13 18:43:48,930 INFO: loading data complete
+2022-12-13 18:43:48,930 INFO: preparing model
+2022-12-13 18:43:48,941 INFO: using mps device
+2022-12-13 18:43:49,654 INFO: model ready
+2022-12-13 18:43:49,655 INFO: running trials
+2022-12-13 18:46:30,804 INFO: loading data
+2022-12-13 18:46:35,436 INFO: loading data complete
+2022-12-13 18:46:35,436 INFO: preparing model
+2022-12-13 18:46:35,452 INFO: using mps device
+2022-12-13 18:46:36,145 INFO: model ready
+2022-12-13 18:46:36,145 INFO: running trials
+2022-12-13 18:48:35,611 INFO: loading data
+2022-12-13 18:48:39,931 INFO: loading data complete
+2022-12-13 18:48:39,932 INFO: preparing model
+2022-12-13 18:48:39,953 INFO: using mps device
+2022-12-13 18:48:40,680 INFO: model ready
+2022-12-13 18:48:40,680 INFO: running trials
+2022-12-13 18:50:51,996 INFO: loading data
+2022-12-13 18:50:56,668 INFO: loading data complete
+2022-12-13 18:50:56,668 INFO: preparing model
+2022-12-13 18:50:56,687 INFO: using mps device
+2022-12-13 18:50:57,393 INFO: model ready
+2022-12-13 18:50:57,393 INFO: running trials
+2022-12-13 18:50:59,930 INFO: pgd attack reached max_iter
+2022-12-13 18:51:01,948 INFO: pgd attack reached max_iter
+2022-12-13 18:51:03,985 INFO: pgd attack reached max_iter
+2022-12-13 18:51:05,999 INFO: pgd attack reached max_iter
+2022-12-13 18:51:08,024 INFO: pgd attack reached max_iter
+2022-12-13 18:51:10,045 INFO: pgd attack reached max_iter
+2022-12-13 18:51:12,064 INFO: pgd attack reached max_iter
+2022-12-13 18:51:14,084 INFO: pgd attack reached max_iter
+2022-12-13 18:51:16,116 INFO: pgd attack reached max_iter
+2022-12-13 18:51:18,139 INFO: pgd attack reached max_iter

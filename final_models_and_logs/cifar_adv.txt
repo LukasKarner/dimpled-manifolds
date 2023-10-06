@@ -1,0 +1,12 @@
+2022-12-13 10:27:06,208 INFO: loading data
+2022-12-13 10:27:07,841 INFO: loading data complete
+2022-12-13 10:27:07,841 INFO: preparing model
+2022-12-13 10:27:07,860 INFO: using mps device
+2022-12-13 10:27:08,112 INFO: model ready
+2022-12-13 10:27:08,112 INFO: running trials
+2023-01-25 15:19:25,881 INFO: loading data
+2023-01-25 15:19:27,400 INFO: loading data complete
+2023-01-25 15:19:27,400 INFO: preparing model
+2023-01-25 15:19:27,409 INFO: using mps device
+2023-01-25 15:19:27,677 INFO: model ready
+2023-01-25 15:19:27,677 INFO: running trials

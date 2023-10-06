@@ -1,0 +1,1213 @@
+2023-01-25 15:15:02,789 INFO: loading data
+2023-01-25 15:15:02,830 INFO: loading data complete
+2023-01-25 15:15:02,830 INFO: preparing model
+2023-01-25 15:15:02,970 INFO: model ready
+2023-01-25 15:15:02,970 INFO: running trials
+2023-01-25 15:15:03,015 INFO: pgd attack reached max_iter
+2023-01-25 15:15:03,040 INFO: pgd attack reached max_iter
+2023-01-25 15:15:03,064 INFO: pgd attack reached max_iter
+2023-01-25 15:15:03,089 INFO: pgd attack reached max_iter
+2023-01-25 15:15:03,113 INFO: pgd attack reached max_iter
+2023-01-25 15:15:03,137 INFO: pgd attack reached max_iter
+2023-01-25 15:15:03,162 INFO: pgd attack reached max_iter
+2023-01-25 15:15:03,187 INFO: pgd attack reached max_iter
+2023-01-25 15:15:03,194 INFO: pgd attack successful after 9 iterations
+2023-01-25 15:15:03,194 INFO: computing projection
+2023-01-25 15:15:12,171 INFO: pgd attack successful after 2 iterations
+2023-01-25 15:15:12,176 INFO: pgd attack successful after 11 iterations
+2023-01-25 15:15:12,176 INFO: adversarial example 1 found
+2023-01-25 15:15:12,202 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,228 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,254 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,279 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,305 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,332 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,358 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,383 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,409 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,438 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,463 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,489 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,514 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,540 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,569 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,594 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,620 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,645 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,671 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,696 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,722 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,747 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,773 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,799 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,825 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,850 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,876 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,901 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,927 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,953 INFO: pgd attack reached max_iter
+2023-01-25 15:15:12,979 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,004 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,030 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,055 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,081 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,106 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,133 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,158 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,183 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,209 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,234 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,260 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,285 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,311 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,336 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,361 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,386 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,412 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,437 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,463 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,488 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,514 INFO: pgd attack reached max_iter
+2023-01-25 15:15:13,530 INFO: pgd attack successful after 28 iterations
+2023-01-25 15:15:13,530 INFO: computing projection
+2023-01-25 15:15:22,368 INFO: pgd attack successful after 8 iterations
+2023-01-25 15:15:22,383 INFO: pgd attack successful after 30 iterations
+2023-01-25 15:15:22,383 INFO: adversarial example 2 found
+2023-01-25 15:15:22,409 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,435 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,461 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,486 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,511 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,540 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,565 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,590 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,615 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,641 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,666 INFO: pgd attack reached max_iter
+2023-01-25 15:15:22,688 INFO: pgd attack successful after 40 iterations
+2023-01-25 15:15:22,688 INFO: computing projection
+2023-01-25 15:15:31,575 INFO: pgd attack successful after 11 iterations
+2023-01-25 15:15:31,596 INFO: pgd attack successful after 43 iterations
+2023-01-25 15:15:31,596 INFO: adversarial example 3 found
+2023-01-25 15:15:31,622 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,647 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,672 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,697 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,722 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,747 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,773 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,799 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,823 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,849 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,874 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,900 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,924 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,950 INFO: pgd attack reached max_iter
+2023-01-25 15:15:31,975 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,000 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,025 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,051 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,076 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,101 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,130 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,156 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,181 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,207 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,232 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,257 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,282 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,308 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,333 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,358 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,383 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,408 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,433 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,458 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,483 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,508 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,533 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,559 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,584 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,609 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,634 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,659 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,684 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,709 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,734 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,760 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,788 INFO: pgd attack reached max_iter
+2023-01-25 15:15:32,804 INFO: pgd attack successful after 30 iterations
+2023-01-25 15:15:32,805 INFO: computing projection
+2023-01-25 15:15:41,675 INFO: pgd attack successful after 6 iterations
+2023-01-25 15:15:41,692 INFO: pgd attack successful after 34 iterations
+2023-01-25 15:15:41,692 INFO: adversarial example 4 found
+2023-01-25 15:15:41,718 INFO: pgd attack reached max_iter
+2023-01-25 15:15:41,744 INFO: pgd attack reached max_iter
+2023-01-25 15:15:41,769 INFO: pgd attack reached max_iter
+2023-01-25 15:15:41,795 INFO: pgd attack reached max_iter
+2023-01-25 15:15:41,820 INFO: pgd attack reached max_iter
+2023-01-25 15:15:41,846 INFO: pgd attack reached max_iter
+2023-01-25 15:15:41,853 INFO: pgd attack successful after 6 iterations
+2023-01-25 15:15:41,853 INFO: computing projection
+2023-01-25 15:15:50,722 INFO: pgd attack successful after 2 iterations
+2023-01-25 15:15:50,726 INFO: pgd attack successful after 7 iterations
+2023-01-25 15:15:50,726 INFO: adversarial example 5 found
+2023-01-25 15:15:50,752 INFO: pgd attack reached max_iter
+2023-01-25 15:15:50,776 INFO: pgd attack successful after 45 iterations
+2023-01-25 15:15:50,777 INFO: computing projection
+2023-01-25 15:15:59,624 INFO: pgd attack successful after 15 iterations
+2023-01-25 15:15:59,645 INFO: pgd attack successful after 47 iterations
+2023-01-25 15:15:59,645 INFO: adversarial example 6 found
+2023-01-25 15:15:59,670 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,695 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,720 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,744 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,769 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,794 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,819 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,844 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,869 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,894 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,919 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,948 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,973 INFO: pgd attack reached max_iter
+2023-01-25 15:15:59,998 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,022 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,047 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,072 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,097 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,122 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,147 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,172 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,197 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,222 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,247 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,272 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,298 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,322 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,347 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,372 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,396 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,422 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,447 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,472 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,497 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,522 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,549 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,573 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,598 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,623 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,648 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,673 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,698 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,723 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,748 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,772 INFO: pgd attack reached max_iter
+2023-01-25 15:16:00,796 INFO: pgd attack successful after 48 iterations
+2023-01-25 15:16:00,796 INFO: computing projection
+2023-01-25 15:16:09,672 INFO: pgd attack successful after 6 iterations
+2023-01-25 15:16:09,702 INFO: pgd attack successful after 64 iterations
+2023-01-25 15:16:09,702 INFO: adversarial example 7 found
+2023-01-25 15:16:09,728 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,754 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,780 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,805 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,831 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,857 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,882 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,908 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,933 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,959 INFO: pgd attack reached max_iter
+2023-01-25 15:16:09,988 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,013 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,039 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,064 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,090 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,115 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,141 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,169 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,195 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,221 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,246 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,272 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,296 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,322 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,347 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,372 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,398 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,423 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,448 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,474 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,499 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,526 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,552 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,578 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,604 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,629 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,655 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,681 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,705 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,731 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,756 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,781 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,807 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,832 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,858 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,884 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,909 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,935 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,960 INFO: pgd attack reached max_iter
+2023-01-25 15:16:10,985 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,011 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,037 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,063 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,088 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,113 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,139 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,165 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,192 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,218 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,243 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,269 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,295 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,321 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,347 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,372 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,397 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,423 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,448 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,473 INFO: pgd attack reached max_iter
+2023-01-25 15:16:11,493 INFO: pgd attack successful after 37 iterations
+2023-01-25 15:16:11,494 INFO: computing projection
+2023-01-25 15:16:20,381 INFO: pgd attack successful after 9 iterations
+2023-01-25 15:16:20,399 INFO: pgd attack successful after 40 iterations
+2023-01-25 15:16:20,399 INFO: adversarial example 8 found
+2023-01-25 15:16:20,425 INFO: pgd attack reached max_iter
+2023-01-25 15:16:20,450 INFO: pgd attack reached max_iter
+2023-01-25 15:16:20,475 INFO: pgd attack reached max_iter
+2023-01-25 15:16:20,505 INFO: pgd attack reached max_iter
+2023-01-25 15:16:20,514 INFO: pgd attack successful after 13 iterations
+2023-01-25 15:16:20,514 INFO: computing projection
+2023-01-25 15:16:29,515 INFO: pgd attack successful after 4 iterations
+2023-01-25 15:16:29,521 INFO: pgd attack successful after 14 iterations
+2023-01-25 15:16:29,522 INFO: adversarial example 9 found
+2023-01-25 15:16:29,548 INFO: pgd attack reached max_iter
+2023-01-25 15:16:29,573 INFO: pgd attack reached max_iter
+2023-01-25 15:16:29,599 INFO: pgd attack reached max_iter
+2023-01-25 15:16:29,625 INFO: pgd attack reached max_iter
+2023-01-25 15:16:29,644 INFO: pgd attack successful after 33 iterations
+2023-01-25 15:16:29,644 INFO: computing projection
+2023-01-25 15:16:38,659 INFO: pgd attack successful after 10 iterations
+2023-01-25 15:16:38,675 INFO: pgd attack successful after 35 iterations
+2023-01-25 15:16:38,675 INFO: adversarial example 10 found
+2023-01-25 15:16:41,066 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,092 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,119 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,146 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,173 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,202 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,229 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,255 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,282 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,310 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,338 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,364 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,390 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,416 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,441 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,467 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,493 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,521 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,546 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,572 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,597 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,624 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,650 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,676 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,702 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,729 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,755 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,781 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,808 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,833 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,863 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,888 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,914 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,939 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,966 INFO: pgd attack reached max_iter
+2023-01-25 15:16:41,991 INFO: pgd attack reached max_iter
+2023-01-25 15:16:42,016 INFO: pgd attack reached max_iter
+2023-01-25 15:16:42,046 INFO: pgd attack reached max_iter
+2023-01-25 15:16:42,071 INFO: pgd attack reached max_iter
+2023-01-25 15:16:42,096 INFO: pgd attack reached max_iter
+2023-01-25 15:16:42,117 INFO: pgd attack successful after 40 iterations
+2023-01-25 15:16:42,117 INFO: computing projection
+2023-01-25 15:16:50,845 INFO: pgd attack successful after 14 iterations
+2023-01-25 15:16:50,863 INFO: pgd attack successful after 42 iterations
+2023-01-25 15:16:50,864 INFO: adversarial example 1 found
+2023-01-25 15:16:50,888 INFO: pgd attack reached max_iter
+2023-01-25 15:16:50,913 INFO: pgd attack reached max_iter
+2023-01-25 15:16:50,936 INFO: pgd attack reached max_iter
+2023-01-25 15:16:50,960 INFO: pgd attack reached max_iter
+2023-01-25 15:16:50,985 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,009 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,034 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,059 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,083 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,107 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,131 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,159 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,184 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,209 INFO: pgd attack reached max_iter
+2023-01-25 15:16:51,227 INFO: pgd attack successful after 34 iterations
+2023-01-25 15:16:51,227 INFO: computing projection
+2023-01-25 15:16:59,666 INFO: pgd attack successful after 6 iterations
+2023-01-25 15:16:59,683 INFO: pgd attack successful after 39 iterations
+2023-01-25 15:16:59,683 INFO: adversarial example 2 found
+2023-01-25 15:16:59,693 INFO: pgd attack successful after 15 iterations
+2023-01-25 15:16:59,694 INFO: computing projection
+2023-01-25 15:17:08,059 INFO: pgd attack successful after 3 iterations
+2023-01-25 15:17:08,066 INFO: pgd attack successful after 17 iterations
+2023-01-25 15:17:08,066 INFO: adversarial example 3 found
+2023-01-25 15:17:08,092 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,116 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,141 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,166 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,190 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,214 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,240 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,266 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,294 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,320 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,351 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,376 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,402 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,428 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,453 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,478 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,503 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,528 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,552 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,577 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,601 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,626 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,651 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,679 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,704 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,728 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,753 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,778 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,802 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,827 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,852 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,877 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,902 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,927 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,952 INFO: pgd attack reached max_iter
+2023-01-25 15:17:08,977 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,002 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,025 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,051 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,075 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,100 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,125 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,150 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,175 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,200 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,231 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,258 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,285 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,311 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,338 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,363 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,389 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,415 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,440 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,464 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,490 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,515 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,540 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,567 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,597 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,625 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,653 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,679 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,704 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,729 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,754 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,780 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,805 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,830 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,855 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,881 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,914 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,939 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,964 INFO: pgd attack reached max_iter
+2023-01-25 15:17:09,988 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,013 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,038 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,062 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,088 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,113 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,139 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,165 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,193 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,221 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,247 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,272 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,299 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,324 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,350 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,376 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,402 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,428 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,453 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,479 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,504 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,530 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,556 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,582 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,607 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,633 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,658 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,684 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,709 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,736 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,762 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,787 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,812 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,837 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,862 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,886 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,911 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,936 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,961 INFO: pgd attack reached max_iter
+2023-01-25 15:17:10,986 INFO: pgd attack reached max_iter
+2023-01-25 15:17:11,011 INFO: pgd attack reached max_iter
+2023-01-25 15:17:11,024 INFO: pgd attack successful after 12 iterations
+2023-01-25 15:17:11,024 INFO: computing projection
+2023-01-25 15:17:19,965 INFO: pgd attack successful after 3 iterations
+2023-01-25 15:17:19,971 INFO: pgd attack successful after 13 iterations
+2023-01-25 15:17:19,971 INFO: adversarial example 4 found
+2023-01-25 15:17:19,997 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,022 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,047 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,072 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,097 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,122 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,147 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,172 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,197 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,221 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,247 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,272 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,298 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,322 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,347 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,372 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,397 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,422 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,447 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,472 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,498 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,524 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,549 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,574 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,600 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,626 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,652 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,678 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,703 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,729 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,754 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,780 INFO: pgd attack reached max_iter
+2023-01-25 15:17:20,795 INFO: pgd attack successful after 26 iterations
+2023-01-25 15:17:20,795 INFO: computing projection
+2023-01-25 15:17:29,303 INFO: pgd attack successful after 7 iterations
+2023-01-25 15:17:29,316 INFO: pgd attack successful after 28 iterations
+2023-01-25 15:17:29,316 INFO: adversarial example 5 found
+2023-01-25 15:17:29,342 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,370 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,395 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,421 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,448 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,474 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,500 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,526 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,552 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,578 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,605 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,630 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,656 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,680 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,706 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,731 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,757 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,783 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,807 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,832 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,857 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,882 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,908 INFO: pgd attack reached max_iter
+2023-01-25 15:17:29,923 INFO: pgd attack successful after 28 iterations
+2023-01-25 15:17:29,924 INFO: computing projection
+2023-01-25 15:17:38,621 INFO: pgd attack successful after 14 iterations
+2023-01-25 15:17:38,634 INFO: pgd attack successful after 30 iterations
+2023-01-25 15:17:38,634 INFO: adversarial example 6 found
+2023-01-25 15:17:38,659 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,685 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,710 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,734 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,759 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,784 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,809 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,834 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,859 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,884 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,909 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,935 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,959 INFO: pgd attack reached max_iter
+2023-01-25 15:17:38,984 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,007 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,032 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,056 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,081 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,111 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,137 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,163 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,188 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,213 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,241 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,266 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,291 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,316 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,340 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,366 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,391 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,416 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,440 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,465 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,490 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,515 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,540 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,565 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,590 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,615 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,640 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,665 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,690 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,715 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,740 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,765 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,790 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,814 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,839 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,864 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,889 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,913 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,938 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,963 INFO: pgd attack reached max_iter
+2023-01-25 15:17:39,987 INFO: pgd attack reached max_iter
+2023-01-25 15:17:40,011 INFO: pgd attack reached max_iter
+2023-01-25 15:17:40,036 INFO: pgd attack reached max_iter
+2023-01-25 15:17:40,061 INFO: pgd attack reached max_iter
+2023-01-25 15:17:40,086 INFO: pgd attack reached max_iter
+2023-01-25 15:17:40,105 INFO: pgd attack successful after 36 iterations
+2023-01-25 15:17:40,105 INFO: computing projection
+2023-01-25 15:17:48,673 INFO: pgd attack successful after 8 iterations
+2023-01-25 15:17:48,690 INFO: pgd attack successful after 40 iterations
+2023-01-25 15:17:48,690 INFO: adversarial example 7 found
+2023-01-25 15:17:48,715 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,739 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,764 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,789 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,813 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,837 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,862 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,887 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,912 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,936 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,960 INFO: pgd attack reached max_iter
+2023-01-25 15:17:48,985 INFO: pgd attack reached max_iter
+2023-01-25 15:17:49,009 INFO: pgd attack reached max_iter
+2023-01-25 15:17:49,034 INFO: pgd attack reached max_iter
+2023-01-25 15:17:49,057 INFO: pgd attack reached max_iter
+2023-01-25 15:17:49,081 INFO: pgd attack reached max_iter
+2023-01-25 15:17:49,091 INFO: pgd attack successful after 13 iterations
+2023-01-25 15:17:49,091 INFO: computing projection
+2023-01-25 15:17:57,594 INFO: pgd attack successful after 5 iterations
+2023-01-25 15:17:57,600 INFO: pgd attack successful after 13 iterations
+2023-01-25 15:17:57,600 INFO: adversarial example 8 found
+2023-01-25 15:17:57,625 INFO: pgd attack reached max_iter
+2023-01-25 15:17:57,651 INFO: pgd attack reached max_iter
+2023-01-25 15:17:57,675 INFO: pgd attack reached max_iter
+2023-01-25 15:17:57,700 INFO: pgd attack reached max_iter
+2023-01-25 15:17:57,725 INFO: pgd attack reached max_iter
+2023-01-25 15:17:57,746 INFO: pgd attack successful after 41 iterations
+2023-01-25 15:17:57,746 INFO: computing projection
+2023-01-25 15:18:06,198 INFO: pgd attack successful after 8 iterations
+2023-01-25 15:18:06,220 INFO: pgd attack successful after 48 iterations
+2023-01-25 15:18:06,220 INFO: adversarial example 9 found
+2023-01-25 15:18:06,245 INFO: pgd attack reached max_iter
+2023-01-25 15:18:06,269 INFO: pgd attack reached max_iter
+2023-01-25 15:18:06,297 INFO: pgd attack reached max_iter
+2023-01-25 15:18:06,316 INFO: pgd attack successful after 35 iterations
+2023-01-25 15:18:06,316 INFO: computing projection
+2023-01-25 15:18:14,758 INFO: pgd attack successful after 8 iterations
+2023-01-25 15:18:14,776 INFO: pgd attack successful after 39 iterations
+2023-01-25 15:18:14,776 INFO: adversarial example 10 found
+2023-01-25 15:18:16,970 INFO: trials complete
+2023-01-25 17:17:28,371 INFO: loading data
+2023-01-25 17:17:28,409 INFO: loading data complete
+2023-01-25 17:17:28,409 INFO: preparing model
+2023-01-25 17:17:28,546 INFO: model ready
+2023-01-25 17:17:28,547 INFO: running trials
+2023-01-25 17:17:28,584 INFO: pgd attack reached max_iter
+2023-01-25 17:17:28,611 INFO: pgd attack reached max_iter
+2023-01-25 17:17:28,638 INFO: pgd attack reached max_iter
+2023-01-25 17:17:28,665 INFO: pgd attack reached max_iter
+2023-01-25 17:17:28,696 INFO: pgd attack reached max_iter
+2023-01-25 17:17:28,723 INFO: pgd attack reached max_iter
+2023-01-25 17:17:28,750 INFO: pgd attack reached max_iter
+2023-01-25 17:17:28,778 INFO: pgd attack reached max_iter
+2023-01-25 17:17:28,807 INFO: pgd attack reached max_iter
+2023-01-25 17:17:28,817 INFO: pgd attack successful after 9 iterations
+2023-01-25 17:17:28,817 INFO: computing projection
+2023-01-25 17:17:38,216 INFO: pgd attack successful after 6 iterations
+2023-01-25 17:17:38,220 INFO: pgd attack successful after 9 iterations
+2023-01-25 17:17:38,220 INFO: adversarial example 1 found
+2023-01-25 17:17:38,248 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,275 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,302 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,329 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,356 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,386 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,414 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,440 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,467 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,495 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,523 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,551 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,578 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,605 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,632 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,659 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,690 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,718 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,745 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,770 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,797 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,826 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,853 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,879 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,905 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,932 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,959 INFO: pgd attack reached max_iter
+2023-01-25 17:17:38,988 INFO: pgd attack reached max_iter
+2023-01-25 17:17:39,015 INFO: pgd attack reached max_iter
+2023-01-25 17:17:39,042 INFO: pgd attack reached max_iter
+2023-01-25 17:17:39,069 INFO: pgd attack reached max_iter
+2023-01-25 17:17:39,097 INFO: pgd attack reached max_iter
+2023-01-25 17:17:39,125 INFO: pgd attack reached max_iter
+2023-01-25 17:17:39,132 INFO: pgd attack successful after 7 iterations
+2023-01-25 17:17:39,132 INFO: computing projection
+2023-01-25 17:17:48,354 INFO: pgd attack successful after 1 iterations
+2023-01-25 17:17:48,359 INFO: pgd attack successful after 8 iterations
+2023-01-25 17:17:48,359 INFO: adversarial example 2 found
+2023-01-25 17:17:48,382 INFO: pgd attack successful after 37 iterations
+2023-01-25 17:17:48,382 INFO: computing projection
+2023-01-25 17:17:57,698 INFO: pgd attack successful after 8 iterations
+2023-01-25 17:17:57,721 INFO: pgd attack successful after 43 iterations
+2023-01-25 17:17:57,721 INFO: adversarial example 3 found
+2023-01-25 17:17:57,747 INFO: pgd attack reached max_iter
+2023-01-25 17:17:57,774 INFO: pgd attack reached max_iter
+2023-01-25 17:17:57,805 INFO: pgd attack reached max_iter
+2023-01-25 17:17:57,820 INFO: pgd attack successful after 22 iterations
+2023-01-25 17:17:57,820 INFO: computing projection
+2023-01-25 17:18:07,431 INFO: pgd attack successful after 5 iterations
+2023-01-25 17:18:07,442 INFO: pgd attack successful after 24 iterations
+2023-01-25 17:18:07,443 INFO: adversarial example 4 found
+2023-01-25 17:18:07,472 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,499 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,526 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,553 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,581 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,607 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,635 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,662 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,690 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,716 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,742 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,769 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,795 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,822 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,849 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,875 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,903 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,930 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,957 INFO: pgd attack reached max_iter
+2023-01-25 17:18:07,987 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,014 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,040 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,067 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,094 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,122 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,148 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,173 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,203 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,230 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,257 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,285 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,311 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,337 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,364 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,391 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,418 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,443 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,471 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,498 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,524 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,551 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,577 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,604 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,631 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,659 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,685 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,712 INFO: pgd attack reached max_iter
+2023-01-25 17:18:08,725 INFO: pgd attack successful after 21 iterations
+2023-01-25 17:18:08,726 INFO: computing projection
+2023-01-25 17:18:18,532 INFO: pgd attack successful after 5 iterations
+2023-01-25 17:18:18,545 INFO: pgd attack successful after 25 iterations
+2023-01-25 17:18:18,545 INFO: adversarial example 5 found
+2023-01-25 17:18:18,572 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,599 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,626 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,654 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,682 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,708 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,735 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,761 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,789 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,820 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,846 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,873 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,900 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,927 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,954 INFO: pgd attack reached max_iter
+2023-01-25 17:18:18,980 INFO: pgd attack reached max_iter
+2023-01-25 17:18:19,006 INFO: pgd attack reached max_iter
+2023-01-25 17:18:19,034 INFO: pgd attack reached max_iter
+2023-01-25 17:18:19,054 INFO: pgd attack successful after 34 iterations
+2023-01-25 17:18:19,054 INFO: computing projection
+2023-01-25 17:18:29,019 INFO: pgd attack successful after 22 iterations
+2023-01-25 17:18:29,036 INFO: pgd attack successful after 34 iterations
+2023-01-25 17:18:29,037 INFO: adversarial example 6 found
+2023-01-25 17:18:29,067 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,096 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,126 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,156 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,184 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,215 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,247 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,278 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,306 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,334 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,363 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,391 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,418 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,446 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,472 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,500 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,528 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,556 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,583 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,615 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,642 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,672 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,700 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,731 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,761 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,790 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,820 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,851 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,880 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,912 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,944 INFO: pgd attack reached max_iter
+2023-01-25 17:18:29,974 INFO: pgd attack reached max_iter
+2023-01-25 17:18:30,003 INFO: pgd attack reached max_iter
+2023-01-25 17:18:30,031 INFO: pgd attack reached max_iter
+2023-01-25 17:18:30,059 INFO: pgd attack reached max_iter
+2023-01-25 17:18:30,087 INFO: pgd attack reached max_iter
+2023-01-25 17:18:30,115 INFO: pgd attack reached max_iter
+2023-01-25 17:18:30,140 INFO: pgd attack reached max_iter
+2023-01-25 17:18:30,168 INFO: pgd attack reached max_iter
+2023-01-25 17:18:30,193 INFO: pgd attack successful after 38 iterations
+2023-01-25 17:18:30,193 INFO: computing projection
+2023-01-25 17:18:40,049 INFO: pgd attack successful after 11 iterations
+2023-01-25 17:18:40,070 INFO: pgd attack successful after 40 iterations
+2023-01-25 17:18:40,070 INFO: adversarial example 7 found
+2023-01-25 17:18:40,098 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,132 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,164 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,193 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,223 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,254 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,283 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,319 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,348 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,376 INFO: pgd attack reached max_iter
+2023-01-25 17:18:40,395 INFO: pgd attack successful after 33 iterations
+2023-01-25 17:18:40,395 INFO: computing projection
+2023-01-25 17:18:49,842 INFO: pgd attack successful after 5 iterations
+2023-01-25 17:18:49,861 INFO: pgd attack successful after 41 iterations
+2023-01-25 17:18:49,861 INFO: adversarial example 8 found
+2023-01-25 17:18:49,885 INFO: pgd attack successful after 42 iterations
+2023-01-25 17:18:49,885 INFO: computing projection
+2023-01-25 17:18:59,202 INFO: pgd attack successful after 6 iterations
+2023-01-25 17:18:59,226 INFO: pgd attack successful after 50 iterations
+2023-01-25 17:18:59,226 INFO: adversarial example 9 found
+2023-01-25 17:18:59,254 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,280 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,309 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,335 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,362 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,389 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,417 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,442 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,470 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,496 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,523 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,549 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,575 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,602 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,629 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,656 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,682 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,708 INFO: pgd attack reached max_iter
+2023-01-25 17:18:59,719 INFO: pgd attack successful after 15 iterations
+2023-01-25 17:18:59,719 INFO: computing projection
+2023-01-25 17:19:08,895 INFO: pgd attack successful after 4 iterations
+2023-01-25 17:19:08,904 INFO: pgd attack successful after 17 iterations
+2023-01-25 17:19:08,904 INFO: adversarial example 10 found
+2023-01-25 17:19:11,229 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,257 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,287 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,316 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,342 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,368 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,397 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,423 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,449 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,474 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,500 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,526 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,553 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,577 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,602 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,627 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,653 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,677 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,702 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,725 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,750 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,774 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,800 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,825 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,849 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,874 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,899 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,924 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,948 INFO: pgd attack reached max_iter
+2023-01-25 17:19:11,977 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,002 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,028 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,052 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,077 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,102 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,126 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,148 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,173 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,198 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,223 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,248 INFO: pgd attack reached max_iter
+2023-01-25 17:19:12,263 INFO: pgd attack successful after 26 iterations
+2023-01-25 17:19:12,263 INFO: computing projection
+2023-01-25 17:19:22,213 INFO: pgd attack successful after 8 iterations
+2023-01-25 17:19:22,225 INFO: pgd attack successful after 28 iterations
+2023-01-25 17:19:22,225 INFO: adversarial example 1 found
+2023-01-25 17:19:22,252 INFO: pgd attack reached max_iter
+2023-01-25 17:19:22,277 INFO: pgd attack reached max_iter
+2023-01-25 17:19:22,303 INFO: pgd attack reached max_iter
+2023-01-25 17:19:22,324 INFO: pgd attack successful after 38 iterations
+2023-01-25 17:19:22,324 INFO: computing projection
+2023-01-25 17:19:31,619 INFO: pgd attack successful after 11 iterations
+2023-01-25 17:19:31,636 INFO: pgd attack successful after 39 iterations
+2023-01-25 17:19:31,636 INFO: adversarial example 2 found
+2023-01-25 17:19:31,662 INFO: pgd attack reached max_iter
+2023-01-25 17:19:31,688 INFO: pgd attack reached max_iter
+2023-01-25 17:19:31,714 INFO: pgd attack reached max_iter
+2023-01-25 17:19:31,733 INFO: pgd attack successful after 35 iterations
+2023-01-25 17:19:31,733 INFO: computing projection
+2023-01-25 17:19:40,939 INFO: pgd attack successful after 52 iterations
+2023-01-25 17:19:40,954 INFO: pgd attack successful after 36 iterations
+2023-01-25 17:19:40,954 INFO: adversarial example 3 found
+2023-01-25 17:19:40,980 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,005 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,031 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,057 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,083 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,108 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,134 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,159 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,185 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,210 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,236 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,261 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,286 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,311 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,336 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,363 INFO: pgd attack reached max_iter
+2023-01-25 17:19:41,384 INFO: pgd attack successful after 41 iterations
+2023-01-25 17:19:41,384 INFO: computing projection
+2023-01-25 17:19:50,269 INFO: pgd attack successful after 8 iterations
+2023-01-25 17:19:50,290 INFO: pgd attack successful after 46 iterations
+2023-01-25 17:19:50,290 INFO: adversarial example 4 found
+2023-01-25 17:19:50,316 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,340 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,366 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,392 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,419 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,444 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,470 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,496 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,523 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,548 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,574 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,600 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,630 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,655 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,685 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,717 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,748 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,780 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,812 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,842 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,875 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,905 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,933 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,959 INFO: pgd attack reached max_iter
+2023-01-25 17:19:50,986 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,012 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,037 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,064 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,091 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,118 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,144 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,173 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,200 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,225 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,255 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,281 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,306 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,332 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,357 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,383 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,408 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,435 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,461 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,486 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,512 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,537 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,561 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,587 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,613 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,638 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,665 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,690 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,712 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,738 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,766 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,794 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,821 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,847 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,874 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,900 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,927 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,953 INFO: pgd attack reached max_iter
+2023-01-25 17:19:51,967 INFO: pgd attack successful after 22 iterations
+2023-01-25 17:19:51,967 INFO: computing projection
+2023-01-25 17:20:01,661 INFO: pgd attack successful after 7 iterations
+2023-01-25 17:20:01,674 INFO: pgd attack successful after 23 iterations
+2023-01-25 17:20:01,674 INFO: adversarial example 5 found
+2023-01-25 17:20:01,701 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,727 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,752 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,782 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,809 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,836 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,861 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,888 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,915 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,940 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,966 INFO: pgd attack reached max_iter
+2023-01-25 17:20:01,992 INFO: pgd attack reached max_iter
+2023-01-25 17:20:02,018 INFO: pgd attack reached max_iter
+2023-01-25 17:20:02,042 INFO: pgd attack reached max_iter
+2023-01-25 17:20:02,067 INFO: pgd attack reached max_iter
+2023-01-25 17:20:02,091 INFO: pgd attack successful after 46 iterations
+2023-01-25 17:20:02,091 INFO: computing projection
+2023-01-25 17:20:11,218 INFO: pgd attack successful after 27 iterations
+2023-01-25 17:20:11,238 INFO: pgd attack successful after 47 iterations
+2023-01-25 17:20:11,238 INFO: adversarial example 6 found
+2023-01-25 17:20:11,265 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,290 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,316 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,342 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,367 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,394 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,421 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,447 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,472 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,498 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,523 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,552 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,578 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,603 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,629 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,655 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,680 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,705 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,734 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,760 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,784 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,810 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,835 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,861 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,885 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,911 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,936 INFO: pgd attack reached max_iter
+2023-01-25 17:20:11,950 INFO: pgd attack successful after 25 iterations
+2023-01-25 17:20:11,950 INFO: computing projection
+2023-01-25 17:20:21,134 INFO: pgd attack successful after 21 iterations
+2023-01-25 17:20:21,148 INFO: pgd attack successful after 26 iterations
+2023-01-25 17:20:21,148 INFO: adversarial example 7 found
+2023-01-25 17:20:21,177 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,203 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,229 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,256 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,281 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,306 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,332 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,358 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,385 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,410 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,437 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,463 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,489 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,514 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,540 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,565 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,590 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,614 INFO: pgd attack reached max_iter
+2023-01-25 17:20:21,629 INFO: pgd attack successful after 24 iterations
+2023-01-25 17:20:21,629 INFO: computing projection
+2023-01-25 17:20:30,700 INFO: pgd attack successful after 5 iterations
+2023-01-25 17:20:30,715 INFO: pgd attack successful after 28 iterations
+2023-01-25 17:20:30,715 INFO: adversarial example 8 found
+2023-01-25 17:20:30,741 INFO: pgd attack reached max_iter
+2023-01-25 17:20:30,767 INFO: pgd attack reached max_iter
+2023-01-25 17:20:30,794 INFO: pgd attack reached max_iter
+2023-01-25 17:20:30,820 INFO: pgd attack reached max_iter
+2023-01-25 17:20:30,845 INFO: pgd attack reached max_iter
+2023-01-25 17:20:30,872 INFO: pgd attack reached max_iter
+2023-01-25 17:20:30,896 INFO: pgd attack reached max_iter
+2023-01-25 17:20:30,922 INFO: pgd attack reached max_iter
+2023-01-25 17:20:30,948 INFO: pgd attack reached max_iter
+2023-01-25 17:20:30,980 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,006 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,031 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,058 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,085 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,110 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,136 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,161 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,186 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,212 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,237 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,263 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,288 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,313 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,338 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,363 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,389 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,415 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,440 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,466 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,491 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,517 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,542 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,568 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,593 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,619 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,643 INFO: pgd attack reached max_iter
+2023-01-25 17:20:31,665 INFO: pgd attack successful after 43 iterations
+2023-01-25 17:20:31,665 INFO: computing projection
+2023-01-25 17:20:40,716 INFO: pgd attack successful after 10 iterations
+2023-01-25 17:20:40,737 INFO: pgd attack successful after 48 iterations
+2023-01-25 17:20:40,737 INFO: adversarial example 9 found
+2023-01-25 17:20:40,763 INFO: pgd attack reached max_iter
+2023-01-25 17:20:40,790 INFO: pgd attack reached max_iter
+2023-01-25 17:20:40,816 INFO: pgd attack reached max_iter
+2023-01-25 17:20:40,841 INFO: pgd attack reached max_iter
+2023-01-25 17:20:40,868 INFO: pgd attack reached max_iter
+2023-01-25 17:20:40,891 INFO: pgd attack reached max_iter
+2023-01-25 17:20:40,916 INFO: pgd attack reached max_iter
+2023-01-25 17:20:40,942 INFO: pgd attack reached max_iter
+2023-01-25 17:20:40,967 INFO: pgd attack reached max_iter
+2023-01-25 17:20:40,993 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,019 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,044 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,070 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,096 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,121 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,145 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,170 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,195 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,219 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,244 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,269 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,292 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,318 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,343 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,368 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,398 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,423 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,449 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,474 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,500 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,524 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,549 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,574 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,600 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,625 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,650 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,676 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,701 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,726 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,751 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,776 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,801 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,826 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,851 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,877 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,902 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,927 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,953 INFO: pgd attack reached max_iter
+2023-01-25 17:20:41,978 INFO: pgd attack reached max_iter
+2023-01-25 17:20:42,002 INFO: pgd attack reached max_iter
+2023-01-25 17:20:42,008 INFO: pgd attack successful after 3 iterations
+2023-01-25 17:20:42,008 INFO: computing projection
+2023-01-25 17:20:51,103 INFO: pgd attack successful after 1 iterations
+2023-01-25 17:20:51,106 INFO: pgd attack successful after 4 iterations
+2023-01-25 17:20:51,106 INFO: adversarial example 10 found
+2023-01-25 17:20:53,321 INFO: trials complete
