@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from ..models import MnistMLP, MnistAEC
-from utils import *
+from ..utils import *
 
 set_up_log("mnist_adv")
 
@@ -13,13 +13,13 @@ logging.info("loading data")
 
 # loading data
 training_data = datasets.MNIST(
-    root="data",
+    root="../data",
     download=True,
     train=True,
     transform=eval_transform(1),
 )
 test_data = datasets.MNIST(
-    root="data",
+    root="../data",
     download=True,
     train=False,
     transform=eval_transform(1),
@@ -46,12 +46,12 @@ device = torch.device("cpu")
 # preparing model
 model = MnistMLP().to(device)
 model.load_state_dict(
-    torch.load("finals/MnistMLP.pth", map_location=device), strict=True
+    torch.load("../finals/MnistMLP.pth", map_location=device), strict=True
 )
 
 autoencoder = MnistAEC().to(device)
 autoencoder.load_state_dict(
-    torch.load("finals/MnistAEC.pth", map_location=device), strict=True
+    torch.load("../finals/MnistAEC.pth", map_location=device), strict=True
 )
 
 logging.info("model ready")

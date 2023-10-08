@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, models
 from ..models import VGG16
-from utils import *
+from ..utils import *
 
 
 set_up_log("imgnet_aec")

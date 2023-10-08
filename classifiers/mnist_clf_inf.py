@@ -3,7 +3,7 @@ from torch.utils.data import DataLoader
 from torchvision import datasets
 from torchvision.transforms import ToTensor
 from ..models import MnistMLP
-from utils import *
+from ..utils import *
 import logging
 
 set_up_log("mnist_clf_inf")
@@ -16,13 +16,13 @@ logging.info("loading data")
 
 # loading data
 training_data = datasets.MNIST(
-    root="data",
+    root="../data",
     download=True,
     train=True,
     transform=eval_transform(1),
 )
 test_data = datasets.MNIST(
-    root="data",
+    root="../data",
     download=True,
     train=False,
     transform=eval_transform(1),
@@ -49,7 +49,7 @@ device = torch.device(device)
 # preparing model
 model = MnistMLP().to(device)
 model.load_state_dict(
-    torch.load("finals/MnistMLP.pth", map_location=device), strict=True
+    torch.load("../finals/MnistMLP.pth", map_location=device), strict=True
 )
 
 logging.info("model ready")

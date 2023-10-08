@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from ..models import MnistMLP
-from utils import *
+from ..utils import *
 
 set_up_log("mnist_clf")
 
@@ -16,10 +16,10 @@ logging.info("loading data")
 
 # loading data
 training_data = datasets.MNIST(
-    root="data", download=True, train=True, transform=eval_transform(1)
+    root="../data", download=True, train=True, transform=eval_transform(1)
 )
 test_data = datasets.MNIST(
-    root="data", download=True, train=False, transform=eval_transform(1)
+    root="../data", download=True, train=False, transform=eval_transform(1)
 )
 
 # create dataloaders

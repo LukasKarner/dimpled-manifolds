@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from ..models import MnistAEC
-from utils import *
+from ..utils import *
 
 set_up_log("mnist_iso_aec")
 
@@ -16,13 +16,13 @@ logging.info("loading data")
 
 # loading data
 training_data = datasets.MNIST(
-    root="data",
+    root="../data",
     download=True,
     train=True,
     transform=ToTensor(),
 )
 test_data = datasets.MNIST(
-    root="data",
+    root="../data",
     download=True,
     train=False,
     transform=ToTensor(),

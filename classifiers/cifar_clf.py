@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from ..models import CifarCNN
-from utils import *
+from ..utils import *
 
 set_up_log("cifar_clf")
 
@@ -15,13 +15,13 @@ logging.info("loading data")
 
 # loading data
 training_data = datasets.CIFAR10(
-    root="data",
+    root="../data",
     download=True,
     train=True,
     transform=train_transform(32),
 )
 test_data = datasets.CIFAR10(
-    root="data",
+    root="../data",
     download=True,
     train=False,
     transform=eval_transform(),

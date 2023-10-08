@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from ..models import MnistAEC
-from utils import *
+from ..utils import *
 
 log_to_stdout()
 
@@ -12,13 +12,13 @@ logging.info("loading data")
 
 # loading data
 training_data = datasets.MNIST(
-    root="data",
+    root="../data",
     download=True,
     train=True,
     transform=ToTensor(),
 )
 test_data = datasets.MNIST(
-    root="data",
+    root="../data",
     download=True,
     train=False,
     transform=ToTensor(),
@@ -37,7 +37,7 @@ device = torch.device("cpu")
 # preparing model
 model = MnistAEC().to(device)
 model.load_state_dict(
-    torch.load("finals/MnistAEC.pth", map_location=device), strict=True
+    torch.load("../finals/MnistAEC.pth", map_location=device), strict=True
 )
 model.eval()
 

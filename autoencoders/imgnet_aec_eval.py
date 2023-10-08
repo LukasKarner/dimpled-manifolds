@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, models
 from ..models import VGG16
-from utils import *
+from ..utils import *
 
 log_to_stdout()
 logging.getLogger("PIL.TiffImagePlugin").setLevel(51)
@@ -47,7 +47,7 @@ device = get_device()
 # preparing model
 model = VGG16().to(device)
 model.load_state_dict(
-    torch.load("finals/ImgNetAEC.pth", map_location=device), strict=True
+    torch.load("../finals/ImgNetAEC.pth", map_location=device), strict=True
 )
 model.eval()
 

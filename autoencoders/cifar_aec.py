@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets
 from ..models import CifarAEC
-from utils import *
+from ..utils import *
 
 
 set_up_log("cifar_aec")

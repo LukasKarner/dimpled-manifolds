@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets
 from ..models import CifarCNN, CifarAEC
-from utils import *
+from ..utils import *
 
 set_up_log("cifar_adv")
 
@@ -13,7 +13,7 @@ logging.info("loading data")
 
 # loading data
 training_data = datasets.CIFAR10(
-    root="data",
+    root="../data",
     download=True,
     train=True,
     transform=eval_transform(),
@@ -24,7 +24,7 @@ training_ind = (training_classes == 0) | (training_classes == 1)
 training_data = Subset(training_data, torch.nonzero(training_ind))
 
 test_data = datasets.CIFAR10(
-    root="data",
+    root="../data",
     download=True,
     train=False,
     transform=eval_transform(),
@@ -47,12 +47,12 @@ device = get_device()
 # preparing model
 model = CifarCNN(n_channel=128).to(device)
 model.load_state_dict(
-    torch.load("finals/CifarCNN.pth", map_location=device), strict=True
+    torch.load("../finals/CifarCNN.pth", map_location=device), strict=True
 )
 
 autoencoder = CifarAEC().to(device)
 autoencoder.load_state_dict(
-    torch.load("finals/CifarAEC.pth", map_location=device), strict=True
+    torch.load("../finals/CifarAEC.pth", map_location=device), strict=True
 )
 
 logging.info("model ready")

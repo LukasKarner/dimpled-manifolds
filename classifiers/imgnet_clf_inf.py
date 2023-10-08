@@ -1,6 +1,6 @@
 from torch.utils.data import DataLoader
 from torchvision import datasets, models
-from utils import *
+from ..utils import *
 
 if __name__ == "__main__":
     set_up_log("imgnet_clf_inf")

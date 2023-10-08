@@ -1,7 +1,7 @@
 from torch.utils.data import DataLoader, Subset
 from ..models import VGG16
 from torchvision import datasets, models
-from utils import *
+from ..utils import *
 
 set_up_log('imgnet_adv')
 logging.getLogger("PIL.TiffImagePlugin").setLevel(51)
